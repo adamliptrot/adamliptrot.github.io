@@ -1,1 +1,417 @@
-remote
+<!DOCTYPE html>
+<html dir="ltr" lang="en-GB">
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+               <title>Adam Liptrot</title>
+		<meta name="description" content="A standards-savvy web developer, based in County Durham, UK. Specialising in user-centered, elegant designs.">
+		<meta name="keywords" content="Adam Liptrot, web developer, web designer, Adam, Liptrot, web, developer, designer, Cleveland, County Durham, Stockton-on-Tees, North-East, Newcastle, freelance, web, css, xhtml, intranet, information architecture, web standards, usability, accessibility">
+		<meta name="author" content="Adam Liptrot">
+	    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	    <link rel="openid.server" href="http://idproxy.net/openid/server/">
+		<link rel="openid.delegate" href="http://adamliptrot.idproxy.net/">
+
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+		<style>
+			/*! normalize.css 2011-11-04T15:38 UTC - http://github.com/necolas/normalize.css */article, aside, details, figcaption, figure, footer, .primary, hgroup, nav, section {
+    display: block;
+}
+			html {
+				font-size: 62.5%;
+				height: 100%;
+			    -webkit-text-size-adjust: 100%;
+			    -ms-text-size-adjust: 100%}
+			body {
+			    margin: 0;
+			    padding: 0 20px;
+				background: #fff;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 400;
+			}
+			* {
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			a {
+				color: inherit;
+				text-decoration: none;
+				background-color: transparent;
+				transition: all ease 0.25s;				
+			}
+			a:focus,
+			a:hover {
+				color: #fff;
+				background-color: #6699CC;
+			}
+			.company {
+				padding: 0 3px;
+				position: relative;
+				left: -3px;
+			}
+
+			footer {
+				max-width: 960px;
+				margin: 0 auto;
+				font-size: 1.1rem;
+				padding-bottom: 60px;
+			}
+			.header {
+				font-weight: 300;
+				font-size: 2.2rem;
+				max-width: 960px;
+				margin: 0 auto;
+				padding-top: 60px;
+			}
+			.header h1 {
+				font-weight: 400;
+				font-size: 3.1rem;
+				color: #6699CC;
+				margin: 0;
+				line-height: 1.1;
+			}
+			.header span {
+				display: block;
+			}
+			.grid {
+				font-size: 0;
+				max-width: 960px;
+				margin: 0 auto;
+				padding-bottom: 40px;
+				counter-reset: grid-counter;
+			}
+			.grid_heading {
+				font-size: 2.2rem;
+				font-weight: 300;
+				margin: 0;
+				padding: 20px 0;
+				border-bottom: 1px solid #989898;
+				border-top: 1px solid #989898;
+			}
+			.grid_row {
+				display: block;
+				min-height: 200px;
+				border-bottom: 1px solid #989898;
+				padding: 30px 0 30px 0;
+				position: relative;
+			}
+			.grid_item {
+				font-size: 1.1rem;
+				width: 100%;
+				display: inline-block;
+				padding: 10px 20px 10px 0;		
+				counter-increment: grid-counter;
+				vertical-align: top;
+				position: relative;
+			}
+			@media screen and (min-width: 340px){
+				.grid_item {
+					width: 50%;
+				}
+			}
+			@media screen and (min-width: 600px){
+				.grid_item {
+					width: 33%;
+				}
+			}
+			@media screen and (min-width: 800px){
+				.grid_item {
+					width: 25%;
+				}
+			}
+			.grid_item figcaption {
+				text-align: center;
+			}
+			.grid_item:before {
+				content: counter(grid-counter) ':  ';
+				color: #6699CC;
+			}
+			.grid_item figure {
+				margin: 0 auto;
+				max-width: 180px;
+			}
+			.client_logo img {
+				max-width: 100%;
+				max-height: 100%;				
+				display: block;				
+			}		
+			.client_logo {				
+				padding: 10px 0;
+				height: 100px;
+			}	
+			.client_logo img {
+				margin: 0 auto;
+				position: relative;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			.case_url {
+				white-space: nowrap;
+				color: #6699CC;
+			}
+			.case_url:before,
+			.case_url:after {
+				content: "";
+				width: 10px;
+				border-top: 1px solid #6699CC;
+				display: inline-block;
+				height: 0.35em;
+				margin: 0 5px;
+				transition: all ease 0.25s;	
+			}
+			.case_url:hover:before,
+			.case_url:hover:after {
+				border-color: #fff;
+			}
+			.grid_title {
+				font-size: 1.7rem;
+				color: #6699CC;
+			}
+			.case_client {
+				display: block;	
+			}
+			.case_role {
+				display: block;
+				font-weight: 300;
+			}
+			.case_logo {				
+				padding: 10px 0;
+				height: 100px;
+				display: inline-block;
+			}	
+			.case {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				background: url("http://assets.pottermore.com/external/blogger/page-bg.jpg") #4c012a;
+				color: #fff;;
+				padding: 20px;
+				
+				display: block;
+				z-index: 0;
+				opacity: 0;
+				transition: opacity ease 1s, left ease 1s, right ease 1s;
+			}
+			.case-opening {
+				opacity: 1;
+				z-index: 1;
+			}
+			.case-open {
+				left: -200%;
+				right: -100%;
+			}
+			.case_copy {
+				opacity: 0;
+				transition: opacity ease 1.5s 0.5s;
+				display: inline-block;
+			}
+			.case-open .case_copy {
+				opacity: 1;
+			}
+
+
+		</style>
+		
+
+	</head>
+
+	<body>
+		<div class="header">
+			<h1>Adam Liptrot</h1>
+			<p><span>Senior Web Developer</span> at <a class="company" href="http://www.think.eu/">TH_NK</a></p>
+		</div>
+
+		<div class="grid">
+			<h2 class="grid_heading">Past projects</h2>
+			<div class="grid_row">
+				<h3 class="grid_title">2015</h3>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/atom.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Atom Bank</span> 
+							<a class="case_url" href="http://www.atombank.co.uk">www.atombank.co.uk</a>
+							<span class="case_role">Client-side lead</span>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+
+			<div class="grid_row">
+				<h3 class="grid_title">2014</h3>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/j2o.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Britvic | J2O</span> 
+							<a class="case_url" href="http://www.j2o.co.uk">www.j2o.co.uk</a>
+							<span class="case_role">Client-side lead</span>
+						</figcaption>
+					</figure>
+
+					
+
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/lst.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Let's Stay Together</span> 
+							<a class="case_url" href="https://www.letsstaytogether.org.uk">www.letsstaytogether.org.uk</a>
+							<span class="case_role">Client-side lead</span></figcaption>
+					</figure>
+
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/potter.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Pottermore</span> 
+							<a class="case_url" href="https://www.pottermore.com">www.pottermore.com</a>
+							<span class="case_role">Client-side team</span></figcaption>
+					</figure>
+					
+					<section class="case">
+						<div class="case_logo"><img src="media/potter-white.png" alt="" /></div>
+						<div class="case_copy">
+							<h2>Pottermore</h2>
+							<p>J.K.Rowling's online home for the Harry Potter universe.</p>
+							<p>Work included documentation, interaction Moment creation and maintenance.</p>
+						</div>
+					</section>					
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/bbc.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">BBC News | Prototype</span> 
+							 <span class="case_role">Client-side lead</span></figcaption>
+					</figure>
+				</div>
+			</div>
+
+			<div class="grid_row">
+				<h3 class="grid_title">2013</h3>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/wb.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Warner Bros | UK</span> 
+							<a class="case_url" href="http://www.warnerbros.co.uk">www.warnerbros.co.uk</a>
+							 <span class="case_role">Client-side lead</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/relish.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Relish Broadband | Hub interface</span> 
+							<a class="case_url" href="https://www.relish.net">www.relish.net</a>
+							 <span class="case_role">Client-side team</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/blackberry.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">BlackBerry | EMEA</span> 
+							<a class="case_url" href="http://global.blackberry.com/sites.html">global.blackberry.com</a>
+							 <span class="case_role">Client-side team</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/formica.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Formica | Worldwide</span> 
+							<a class="case_url" href="http://www.formica.com">www.formica.com</a>
+							 <span class="case_role">Client-side team</span></figcaption>
+					</figure>
+				</div>
+			</div>
+			<div class="grid_row">
+				<h3 class="grid_title">2012</h3>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/c4.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Channel 4 / Kudos | Utopia Inquiry</span> 
+							<a class="case_url" href="http://vimeo.com/67388712">View showreel</a>
+							 <span class="case_role">Client-side lead</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/think.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">TH_NK | Company site</span> 
+							<a class="case_url" href="http://www.think.eu">www.think.eu</a>
+							 <span class="case_role">Client-side lead</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/sun.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">The Sun | Homepage prototype</span> 
+							 <span class="case_role">Client-side team</span></figcaption>
+					</figure>
+				</div>
+			</div>
+			<div class="grid_row">
+				<h3 class="grid_title">2011</h3>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/sony.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Sony EEC | PS Vita European launch</span> 
+							 <span class="case_role">Client-side lead</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/blackberry.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">BlackBerry | EMEA</span> 
+							<a class="case_url" href="http://global.blackberry.com/sites.html">global.blackberry.com</a>
+							 <span class="case_role">Client-side team</span></figcaption>
+					</figure>
+				</div>
+				<div class="grid_item">
+					<figure class="client">
+						<div class="client_logo"><img src="media/nwl.png" alt="" /></div>
+						<figcaption>
+							<span class="case_client">Northumbrian Water</span> 
+							<a class="case_url" href="https://www.nwl.co.uk">www.nwl.co.uk</a>
+							 <span class="case_role">Client-side team</span></figcaption>
+					</figure>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<p>&copy; Adam Liptrot 2015 - all logos copyright relevant companies.</p>
+			<p>Find me on <a href="https://twitter.com/adamliptrot">Twitter</a> and <a href="https://www.linkedin.com/profile/view?id=14830056">LinkedIn</a></p>
+		</footer>
+		
+		
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script>
+			$( document ).ready(function() {
+ 				$('.grid_item').on('click', function(){
+ 					$grid = $(this);
+ 					$grid.find('.case').addClass('case-opening');
+ 					setTimeout(function(){
+ 						//$grid.find('.case').removeClass('case-opening');
+ 						$grid.find('.case').addClass('case-open');
+ 					}, 1000);
+ 				});
+			});
+		</script>
+	</body>
+
+</html>	

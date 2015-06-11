@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<title>Two-tier navigation demo</title>
+		<link href="/assets/styles/old/reset.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			h1 {text-align: left; font-size: 2em; padding-bottom: 1em;}
+			div {text-align: left;}
+			
+			/*set up some defaults and centre the menu*/
+			body {padding-top: 5em; text-align: center; font: 75% "HelveticaNeue-Heavy","Helvetica 85 Heavy",Helvetica,Arial,Sans-serif; line-height: 1; width: 865px; margin: 0 auto;}
+
+			/*clearing fix for floats*/
+			.fix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+			.fix{display:inline-block;} 
+			* html .fix{height:1%;}
+			.fix{display:block;}
+			
+			
+			/*the basic navigation*/
+			.simplenav li li {padding-left: 0;}									/*removes the indentation for nested lists set out in the reset css*/
+			.simplenav {height: 6.55em; position: relative;} 					/*height gives a container to sit the sub-nav within*/
+			.simplenav ul {}
+			.simplenav li {float: left;}										/*makes the list horizontal*/
+			.simplenav li span {display: block;}								/*puts the 'subtext' on a new line*/
+			
+			/*additions for placing the nested lists as subnavs*/
+			.on {position: absolute; bottom: 0; left: 0; width: 100%;}			/*places the sub nav below the main nav*/
+			.off {top: -9999999px; position: absolute; opacity: 0;}				/*hide the inactive sub navs - leaves them 'visible' to screen readers*/
+			
+			/*prettifying*/
+			.simplenav .skip {float: right;}
+			.simplenav a {padding: 0.75em 1em; display: block; color: #fff; font-weight: bold; font-size: 1.2em; text-decoration: none;}
+			span {font-size: 0.7em; opacity: 0.7;}
+			.simplenav>ul {background: url(main.jpg) top left repeat-x;}
+			.simplenav>ul>li {border-right: 1px solid #5f5f5f;}
+			.skip {border-left: 1px solid #5f5f5f; border-right-width: 0;}
+			.simplenav>ul>li>a:hover {background-image: url(hover.jpg)}
+			
+				/*selected tab*/
+				.here>a {background: url(sub.jpg) top left repeat-x;}
+				.simplenav>ul>li.here>a:hover {background: url(sub.jpg) top left repeat-x;}
+				
+				
+				/*sub menu*/
+				.on li a, .off li a {font-size: 1em; display: block; padding: 1em;}  /*make sure padding and font-size is the same on both on and off states as this is part of the measured width*/
+				.on {background: url(hover.jpg) bottom left repeat-x;
+					-moz-border-radius-bottomright: 5px;
+					-webkit-border-bottom-right-radius: 5px;
+					-moz-border-radius-bottomleft: 5px;
+					-webkit-border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
+					border-bottom-left-radius: 5px;
+
+				}
+				.on li {display: block;}
+				.here .on {background: url(sub.jpg) bottom left repeat-x;}
+				.on a:hover {text-decoration: underline;}
+			
+			/*keep the top-level tab selected when moving to the sub nav */
+			.simplenav li.MenuVisible>a {background-image: url(hover.jpg);}
+			.simplenav li.MenuVisible>a span {background: transparent none; color: #fff;}
+			
+		</style>
+		
+		<!--[if lte IE 6]>
+			<style type="text/css">
+				/*ul, li, div {zoom: 1;}*/
+				.on {width: 865px; top: 3.45em;}
+				.simplenav {height: 7.9em;}
+				.simplenav li {display: inline;}
+				.simplenav ul {display: block; height: 3.45em;}
+				
+				.simplenav ul li {border-right: 1px solid #5f5f5f;}
+				.simplenav ul li ul li {border-right-width: 0;}				
+				
+				/*top nav*/
+				/*std*/
+					.simplenav ul {background: url("main.jpg") bottom left repeat-x;}
+					.simplenav ul li a {background: url("main.jpg") bottom left repeat-x;}
+				/*current*/
+					.simplenav ul li.here a {background: url("sub.jpg") bottom left repeat-x;}
+				/*hover*/
+					.simplenav ul li a:hover {background: url("main.jpg") bottom left repeat-x;}
+					.simplenav ul li.here a:hover {background: url("sub.jpg") bottom left repeat-x;}
+				
+				/*bottom nav*/
+				/*current*/
+					.simplenav ul li ul li a {background: url("main.jpg") bottom left repeat-x;}
+					.simplenav ul li.here ul li a {background: url("sub.jpg") bottom left repeat-x;}
+					.simplenav ul li ul li a:hover {background: url("main.jpg") bottom left repeat-x; text-decoration: underline;}
+					.simplenav ul li.here ul li a:hover {background: url("sub.jpg") bottom left repeat-x; text-decoration: underline;}
+				/*hover*/
+									
+				.simplenav ul li ul.on {width: 865px;}
+
+				
+			</style>
+		<![endif]-->
+		
+				
+		<script type="text/javascript" src="/assets/js/old/jquery-1.4.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+		
+				$(".simplenav>ul>li>a").bind("mouseenter",function(){
+					hideAllNav();
+					showChildNav(this);
+				});
+				
+				$(".simplenav").bind("mouseleave",function(){
+					hideAllNav();
+					showCurrentNav();
+				});
+		
+			});
+			
+		
+		
+	
+			function hideAllNav(menu){
+				$(".simplenav ul ul").removeClass("on fix");
+				$(".simplenav ul ul").addClass("off");
+			}
+			
+			function showChildNav(actOnMe){
+				$(".simplenav li").removeClass("MenuVisible");
+				$(actOnMe).parent("li").find("ul").removeClass("off");
+				$(actOnMe).parent("li").find("ul").addClass("on fix");
+				$(actOnMe).parent("li").not($("li.here")).find("ul").bind("mouseenter",function(){
+					$(this).parent("li").addClass("MenuVisible");
+					
+				}).bind("mouseleave",function(){
+					$(this).parent("li").removeClass("MenuVisible");
+				});
+			}
+			
+			function showCurrentNav(){
+				//only do this if it is currently hidden
+				if($(".simplenav li.here ul").hasClass("off")){
+					$(".simplenav li.here ul").removeClass("off");
+					$(".simplenav li.here ul").addClass("on fix");
+				}
+			}
+		</script>
+
+	</head>
+
+<body>
+	
+	<h1>Two-tier navigation demo</h1>
+	
+	<div class="simplenav fix">
+		<ul class="fix">
+			<li><a href="/" title="Return to the the frontpage">Home<br /><span>hello</span></a></li>
+			<li><a href="">Projects <span>client work</span></a>
+				<ul class="off">
+					<li><a href="">By area</a></li>
+					<li><a href="">Case studies</a></li>
+					<li><a href="">Can we help you?</a></li>
+				</ul>
+			</li>
+			<li><a href="">Products <span>buy me</span></a>
+				<ul class="off">
+					<li><a href="">Desktop apps</a></li>
+					<li><a href="">Web apps</a></li>
+					<li><a href="">Mobile apps</a></li>
+				</ul>
+			</li>
+			<li><a href="">Support <span>faq &amp; forums</span></a>
+				<ul class="off">
+					<li><a href="">FAQ</a></li>
+					<li><a href="">Knowledge base</a></li>
+					<li><a href="">Tutorials</a></li>
+					<li><a href="">Forum</a></li>
+				</ul>
+			</li>
+			<li class="here"><a href="">Blog <span>(almost) daily</span></a>
+				<ul class="on">
+					<li><a href="">Archives</a></li>
+					<li><a href="">Blog roll</a></li>
+				</ul>
+			</li>
+			<li><a href="">About <span>our team</span></a></li>
+			<li><a href="">Contact <span>get in touch</span></a></li>
+			<li class="skip"><a href="/logout/" title="Log Out">Log Out <span>Bye</span></a></li>
+		</ul>
+	</div>
+	
+	
+
+	
+</body>
+</html>

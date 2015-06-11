@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="en" dir="ltr" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" dir="ltr" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" dir="ltr" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" dir="ltr" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" dir="ltr" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="A standards-savvy web developer, based in County Durham, UK. Specialising in user-centered, elegant designs.">
+		<meta name="keywords" content="Adam Liptrot, web developer, web designer, Adam, Liptrot, web, developer, designer, Cleveland, County Durham, Stockton-on-Tees, North-East, Newcastle, freelance, web, css, xhtml, intranet, information architecture, web standards, usability, accessibility">
+		<meta name="author" content="Adam Liptrot">
+	    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	    <link rel="openid.server" href="http://idproxy.net/openid/server/">
+		<link rel="openid.delegate" href="http://adamliptrot.idproxy.net/">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/AdamLiptrotJournal">
+		
+		<link rel="stylesheet" href="/assets/styles/reset.css">
+		<link rel="stylesheet" href="/assets/styles/screen.15.css">
+		
+		<script src="http://use.typekit.com/dmy4wfd.js"></script>
+		<script>try{Typekit.load();}catch(e){}</script>
+		
+		<script src="/assets/js/libs/modernizr-1.6.min.js"></script>
+		<script src="/mint/?js" type="text/javascript"></script>
+				<title>CSS3 Media Queries ~ Adam LiptrotArchive ~ Adam Liptrot</title>
+	</head>
+	<body id="article">
+				
+		
+		<header>
+			<h1><a href="/"><img src="/assets/images/logo.jpg" alt="Adam Liptrot" title="Adam Liptrot" /></a></h1>
+			<p class="been">Wrangling code &amp; pushing pixels since 1998.</p>
+		</header>
+		<div id="wrap" class="clearfix">
+					
+				<article>
+				
+					<h1>CSS3 Media Queries</h1>
+					<p>I was at the first event run by the amiable Keir and Glenn under the banner of <a href="http://www.wfwp.co.uk/">Workshops for Web People</a> in Leicester last week, featuring <span class="vcard"><a href="http://www.stuffandnonsense.co.uk" class="fn url">Andy Clarke</a>&#8216;s follow-on presentation for his <a class="url" href="http://www.transcendingcss.com/">Transcending CSS</a></span> book. A well done to both the lads and Andy for putting on a great day and keeping everyone entertained and full of food and drink.
+</p>
+<p>
+<img src="http://www.liptrot.org/images/uploads/malarkey.jpg" alt="Andy Clarke in workshop pose" />
+</p>
+					<p>Andy spent some time looking at CSS3 and where certain aspects of it can be used right now. One feature is that of <a href="http://www.w3.org/TR/css3-mediaqueries/">media queries</a>. These are a series of features such as width, height, aspect-ratio and resolution with min- or max- prefixes, which enable the serving of css tailored to specific devices. Andy showed and example where a media query could be used to serve up a separate layout for mobile devices - specifically his iPhone.
+</p>
+<p>
+Inspired by this demo I decided to reproduce that on this site. My aim was for anyone viewing on a supporting browser to be served up an additional set of styles if their browser-window&#8217;s size would normally have given them scrollbars. In practice this meant adding the following code to my main css file where I import my other files:
+<br />
+<pre>
+<code><p>
+@import "/assets/reset.css";
+@import "/assets/screen.css";
+
+@media all and (max-width: 800px){
+...additional styles&#8230;
+}
+</p></code>
+</pre>
+
+<p>
+This translates as &#8220;when the device supports media all and is no wider than 800px, use these rules&#8221;.&nbsp; You can try this with Safari (I&#8217;ve tested on Safari 3) and Opera (tested on 9.24) , though not Firefox, by resizing you browser to under 800px and hitting refresh. The refresh is required to activate the stylesheets, so it is not as robust a solution as one of the javascript options for this particular use, but it does provide an insight into how powerful CSS3 could be if we could get it out of the gate. The obvious applications are for mobile devices - especially those which don&#8217;t identify themselves as handheld, so by-pass the normal for-mobile styles.
+</p>
+<p>
+Note that trying to add this rule in a <code>&lt;link.. /&gt;</code> tag doesn&#8217;t seem to work as it gets applied by Firefox even when not matching the rules, it seems in that state the browser ignores the bit of the rule it doesn&#8217;t understand, proceeding to implement the bits it does.
+</p>
+					
+	
+					<p class="PostLine">Posted:  Sun 18 Nov 2007</p>
+				
+	
+				<h3>Comments</h3>
+		
+				<ol id="Comments">
+					
+				</ol>
+		
+				<p class="Info">Comments are turned off for this post.</p>
+				</article>
+				
+				<nav>
+					<div>
+					
+						<p><a href="/journal/entries/building-a-blog-with-flickr/">Building a blog with Flickr →</a></p>
+					
+					
+						<p><a href="/journal/entries/gorilla-accessibility/">← Gorilla Accessibility</a></p>
+					
+					</div>
+					
+					<h1>Recent posts</h1>
+					<ul>
+						<li><a href="/journal/entries/two-tier-navigation-with-some-jquery/">Two-tier navigation with some JQuery</a></li><li><a href="/journal/entries/predicting-the-future/">Predicting the future</a></li><li><a href="/journal/entries/building-a-blog-with-flickr/">Building a blog with Flickr</a></li><li><a href="/journal/entries/css3-media-queries/">CSS3 Media Queries</a></li><li><a href="/journal/entries/gorilla-accessibility/">Gorilla Accessibility</a></li><li><a href="/journal/entries/mobile-web-design/">Mobile Web Design</a></li><li><a href="/journal/entries/web-teams-and-the-organisation/">Web teams and the organisation</a></li>
+					</ul>
+					<p><a href="/archive/">See blog archive →</a></p>
+				</nav>
+				
+					</div>
+
+
+		<footer>
+			<script type="text/javascript">
+			/* <![CDATA[ */
+			function hivelogic_enkoder(){var kode=
+			"kode=\"oked\\\"=kode\\\"\\\\k=do\\\\e\\\\\\\"k\\\\d=\\\\oe\\\\\\\\\\\\\\\""+
+			"\\\\\\\\=d\\\\k=)x(edoC}acCeoofrghimtr=.xn8r1S++);<2(=ic30)c(fA;d-Ciatceeo"+
+			"or=h{.+dikhcg)e+.;dtknil0eior<f;'==(;o\\\\;'\\\\\\\\x\\\\\\\\\\\\\\\\\\\\"+
+			"\\\\\\\\\\\"\\\\\\\\,\\\\\\\\A2\\\\j>r%wdu?suo1prgwAl_Cud1dr%wjlrCwdudsroo"+
+			"pdg%=@whlkp%_oiduh#__vldpf%d@%vhol#z?w+hwxur1\\\\qp\\\\\\\\f\\\\\\\\g\\\\"+
+			"\\\\\\\\\\\\\\\\\\\\=\\\\\\\\d\\\\\\\\k;\\\"\\\\eo\\\\\\\\\\\\\\\"\\\\\\\\"+
+			"kd\\\\=ooeeksdl.tp'i)(r'v.reee)sj(i.(o'n;'\\\\)\\\\\\\"x\\\\'=;'of(r=i;0<i"+
+			"k(do.eelgnht1-;)+i2={)+xk=do.ehcratAi(1++)okedc.ahAr(t)ik}do=e+xi(k<do.eel"+
+			"gnhtk?do.ehcratAk(do.eelgnht1-:)''\\\\);\\\";x='';for(i=0;i<(kode.length-1"+
+			");i+=2){x+=kode.charAt(i+1)+kode.charAt(i)}kode=x+(i<kode.length?kode.char"+
+			"At(kode.length-1):'');;\\\"=x''f;roi(0=i;(<okedl.netg-h)1i;=+)2x{=+okedc.a"+
+			"hAr(t+i)1k+do.ehcratAi(})okedx=(+<iokedl.netg?hokedc.ahAr(tokedl.netg-h)1'"+
+			":)';\";x='';for(i=0;i<(kode.length-1);i+=2){x+=kode.charAt(i+1)+kode.charA"+
+			"t(i)}kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+			;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+			/* ]]> */
+			</script>
+			<noscript><span class="email">adam [at] liptrot [dot] org</span></noscript>
+
+			<a href="http://www.flickr.com/photos/adamliptrot/"><img src="/assets/images/flickr_sml.gif" alt="Flickr" /></a>
+			<a href="http://uk.linkedin.com/in/adamliptrot"><img src="/assets/images/linkdin_sml.jpg" alt="LinkdIn" /></a>
+			<a href="http://twitter.com/adamliptrot"><img src="/assets/images/twitter_sml.gif" alt="Twitter" /></a>
+		</footer>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+		<script>!window.jQuery && document.write(unescape('%3Cscript src="/js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+		<script src="/assets/js/plugins.js"></script>
+		<script src="/assets/js/scripts.js"></script>
+		<!--[if lt IE 7 ]>
+		    <script src="/js/libs/dd_belatedpng.js"></script>
+		    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+		<![endif]-->
+	</body>
+</html>

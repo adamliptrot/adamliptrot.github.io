@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="en" dir="ltr" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" dir="ltr" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" dir="ltr" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" dir="ltr" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" dir="ltr" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="A standards-savvy web developer, based in County Durham, UK. Specialising in user-centered, elegant designs.">
+		<meta name="keywords" content="Adam Liptrot, web developer, web designer, Adam, Liptrot, web, developer, designer, Cleveland, County Durham, Stockton-on-Tees, North-East, Newcastle, freelance, web, css, xhtml, intranet, information architecture, web standards, usability, accessibility">
+		<meta name="author" content="Adam Liptrot">
+	    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	    <link rel="openid.server" href="http://idproxy.net/openid/server/">
+		<link rel="openid.delegate" href="http://adamliptrot.idproxy.net/">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/AdamLiptrotJournal">
+		
+		<link rel="stylesheet" href="/assets/styles/reset.css">
+		<link rel="stylesheet" href="/assets/styles/screen.15.css">
+		
+		<script src="http://use.typekit.com/dmy4wfd.js"></script>
+		<script>try{Typekit.load();}catch(e){}</script>
+		
+		<script src="/assets/js/libs/modernizr-1.6.min.js"></script>
+		<script src="/mint/?js" type="text/javascript"></script>
+				<title>Building a blog with Flickr ~ Adam LiptrotArchive ~ Adam Liptrot</title>
+	</head>
+	<body id="article">
+				
+		
+		<header>
+			<h1><a href="/"><img src="/assets/images/logo.jpg" alt="Adam Liptrot" title="Adam Liptrot" /></a></h1>
+			<p class="been">Wrangling code &amp; pushing pixels since 1998.</p>
+		</header>
+		<div id="wrap" class="clearfix">
+					
+				<article>
+				
+					<h1>Building a blog with Flickr</h1>
+					<p>About a year ago I became the proud owner of a 1979 MGB GT and began restoring it. I&#8217;d been thinking about setting up a blog about the process for a while and have finally got around to it. Luckily, over the past few months I&#8217;d been pretty good at taking photographs to document it all and had uploaded them to Flickr.
+</p>
+<p>
+<img src="http://www.liptrot.org/images/uploads/incayellow.jpg" alt="Inca Yellow screenshot" />
+<br />
+
+</p>
+					<p>Now, I&#8217;ve used <a href="http://expressionengine.com/">Expression Engine</a> before and this was my first thought when I sat down to put my MG blog together. However it did seem a bit of overkill for what I wanted and I&#8217;d been there, done that and wanted to try something a bit different.
+</p>
+<p>
+As I&#8217;d been uploading all my <a href="http://www.flickr.com/photos/adamliptrot/sets/72157603651163453/">MG photos</a> to Flickr and knowing that their photo description field allows a limited but totally sufficient set of html tags coupled with a <a href="http://www.flickr.com/services/api/">nice API</a> (even though it&#8217;s <a href="http://morethanseven.net/2008/02/21/sorry-but-the-flickr-api-isnt-rest/">not RESTful</a>), I decided to try using Flickr as a blog engine.
+</p>
+<p>
+Before I go on, take a quick look at the result: <a href="http://www.incayellow.com/">IncaYellow.com</a>.
+</p>
+<p>
+The Flickr API is really pretty nice to work with. However, it can be a touch slow so I added in a bit of server-side caching to save visitors having to wait too long. For example, this is pulling in the individual photo information with a little bit of simple caching:
+</p>
+<pre>
+<code><p>
+function getPhotoInfo($p) {
+	// build the API URL to call
+	$params = array(
+		'api_key'	=> 'YOUR_API_KEY',
+		'method'	=> 'flickr.photos.getInfo',
+		'photo_id'	=> $p,
+	);
+	$encoded_params = array();
+	foreach ($params as $k => $v){
+		$encoded_params[] = urlencode($k).'='.urlencode($v);
+	}
+	
+	//call the API and decode the response
+	$flickrurl = "http://api.flickr.com/services/rest/?".implode('&amp;', $encoded_params);
+
+	//set cache options
+	$cachefile = 'PATH_TO_CACHE_FOLDER'.$p.'photoData.xml';
+	$cachetimelimit = ((60 * 60) * 24); //day
+		
+		
+	//use the cache if newer than $cachetimelimit
+		if (file_exists($cachefile) &amp;&amp; time() - $cachetimelimit < filemtime($cachefile)) {
+			$xml = file_get_contents($cachefile, true);
+		} else {
+			//get the data and save to the cache
+			$xml = file_get_contents($flickrurl);
+			
+			// Cache the output to a file
+			$fp = fopen($cachefile, 'w');
+			fwrite($fp, $xml);
+			fclose($fp);
+		}
+		
+		//dump the xml in a variable	
+		if ( $xml ) {
+			$theStuff = simplexml_load_string($xml);
+		}
+		return $theStuff;	
+} 
+</p></code>
+</pre>
+
+<p>
+You can then parse the resulting xml file to pull out the required info. Using a couple of other Flickr API methods and the <a href="http://delicious.com/help/api">Delicious API</a> meant I could pretty much reproduce a full-on blog, complete with archives and tag pages.
+</p>
+<p>
+Now obviously this wouldn&#8217;t suit most blogs, but I knew that my posts would be pretty short and always be accompanied by a photo, so I was set.
+</p>
+<p>
+There are a few enhancements I&#8217;ve got in mind for the next few weeks. The main one is being able to add more than one photo for a given post, especially for those more tricky mechanical jobs. This seems like a perfect opportunity to use machine tags to relate photos to each other and by adding something like:
+</p>
+<pre><code>incayellow:post:PHOTOID</code></pre>
+</p>
+<p>
+to a photo, I could pull in all the other photos to do with that job. Comments are another nice-to-have, so I&#8217;ll be building that in too. I&#8217;ll also be tweaking the caching timing over time to find the optimal period to keep data for (it&#8217;d be nice to have the cache refresh for new posts). The other thing I just haven&#8217;t got around to yet is an RSS feed. I could just use the Flickr RSS feed, but that just seems lazy, so I&#8217;ll most likely roll my own. Also on the horizon is a 404 page, just because I think you should always have one.
+</p>
+					
+	
+					<p class="PostLine">Posted:  Thu 20 Nov 2008</p>
+				
+	
+				<h3>Comments</h3>
+		
+				<ol id="Comments">
+					
+					<li>
+						<h4><a href="http://www.brightyoungfolk.com">Christopher</a> <span>said:</span></h4>
+						<blockquote>
+							<p>It&#8217;s looking good. Is there really no RSS feed built in? It&#8217;s the only way I can keep up to date on blogs these days.
+</p>
+<p>
+Ta, Chris
+</p>
+						</blockquote>
+						<p class="PostLine">09:39 AM on 21 Nov 2008</p>
+					</li>
+					
+					<li>
+						<h4><a href="http://www.brightyoungfolk.com">Christopher</a> <span>said:</span></h4>
+						<blockquote>
+							<p>Ok, sorry. I should have read all the way to the end. I got distracted by the shiny new website.
+</p>
+						</blockquote>
+						<p class="PostLine">09:40 AM on 21 Nov 2008</p>
+					</li>
+					
+					<li>
+						<h4><a href="http://johnsbeharry.com">Johns Beharry</a> <span>said:</span></h4>
+						<blockquote>
+							<p>That is really damm cool. Thanks for sharing
+</p>
+						</blockquote>
+						<p class="PostLine">11:32 PM on 22 Nov 2008</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>UPDATE: Hey, Chris, you&#8217;ll be happy to hear the site now has a RSS feed.
+</p>
+						</blockquote>
+						<p class="PostLine">11:11 PM on 23 Nov 2008</p>
+					</li>
+					
+				</ol>
+		
+				<p class="Info">Comments are turned off for this post.</p>
+				</article>
+				
+				<nav>
+					<div>
+					
+						<p><a href="/journal/entries/predicting-the-future/">Predicting the future →</a></p>
+					
+					
+						<p><a href="/journal/entries/css3-media-queries/">← CSS3 Media Queries</a></p>
+					
+					</div>
+					
+					<h1>Recent posts</h1>
+					<ul>
+						<li><a href="/journal/entries/two-tier-navigation-with-some-jquery/">Two-tier navigation with some JQuery</a></li><li><a href="/journal/entries/predicting-the-future/">Predicting the future</a></li><li><a href="/journal/entries/building-a-blog-with-flickr/">Building a blog with Flickr</a></li><li><a href="/journal/entries/css3-media-queries/">CSS3 Media Queries</a></li><li><a href="/journal/entries/gorilla-accessibility/">Gorilla Accessibility</a></li><li><a href="/journal/entries/mobile-web-design/">Mobile Web Design</a></li><li><a href="/journal/entries/web-teams-and-the-organisation/">Web teams and the organisation</a></li>
+					</ul>
+					<p><a href="/archive/">See blog archive →</a></p>
+				</nav>
+				
+					</div>
+
+
+		<footer>
+			<script type="text/javascript">
+			/* <![CDATA[ */
+			function hivelogic_enkoder(){var kode=
+			"kode=\"oked\\\"=kode\\\"\\\\k=do\\\\e\\\\\\\"k\\\\d=\\\\oe\\\\\\\\\\\\\\\""+
+			"\\\\\\\\=d\\\\k=)x(edoC}acCeoofrghimtr=.xn8r1S++);<2(=ic30)c(fA;d-Ciatceeo"+
+			"or=h{.+dikhcg)e+.;dtknil0eior<f;'==(;o\\\\;'\\\\\\\\x\\\\\\\\\\\\\\\\\\\\"+
+			"\\\\\\\\\\\"\\\\\\\\,\\\\\\\\A2\\\\j>r%wdu?suo1prgwAl_Cud1dr%wjlrCwdudsroo"+
+			"pdg%=@whlkp%_oiduh#__vldpf%d@%vhol#z?w+hwxur1\\\\qp\\\\\\\\f\\\\\\\\g\\\\"+
+			"\\\\\\\\\\\\\\\\\\\\=\\\\\\\\d\\\\\\\\k;\\\"\\\\eo\\\\\\\\\\\\\\\"\\\\\\\\"+
+			"kd\\\\=ooeeksdl.tp'i)(r'v.reee)sj(i.(o'n;'\\\\)\\\\\\\"x\\\\'=;'of(r=i;0<i"+
+			"k(do.eelgnht1-;)+i2={)+xk=do.ehcratAi(1++)okedc.ahAr(t)ik}do=e+xi(k<do.eel"+
+			"gnhtk?do.ehcratAk(do.eelgnht1-:)''\\\\);\\\";x='';for(i=0;i<(kode.length-1"+
+			");i+=2){x+=kode.charAt(i+1)+kode.charAt(i)}kode=x+(i<kode.length?kode.char"+
+			"At(kode.length-1):'');;\\\"=x''f;roi(0=i;(<okedl.netg-h)1i;=+)2x{=+okedc.a"+
+			"hAr(t+i)1k+do.ehcratAi(})okedx=(+<iokedl.netg?hokedc.ahAr(tokedl.netg-h)1'"+
+			":)';\";x='';for(i=0;i<(kode.length-1);i+=2){x+=kode.charAt(i+1)+kode.charA"+
+			"t(i)}kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+			;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+			/* ]]> */
+			</script>
+			<noscript><span class="email">adam [at] liptrot [dot] org</span></noscript>
+
+			<a href="http://www.flickr.com/photos/adamliptrot/"><img src="/assets/images/flickr_sml.gif" alt="Flickr" /></a>
+			<a href="http://uk.linkedin.com/in/adamliptrot"><img src="/assets/images/linkdin_sml.jpg" alt="LinkdIn" /></a>
+			<a href="http://twitter.com/adamliptrot"><img src="/assets/images/twitter_sml.gif" alt="Twitter" /></a>
+		</footer>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+		<script>!window.jQuery && document.write(unescape('%3Cscript src="/js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+		<script src="/assets/js/plugins.js"></script>
+		<script src="/assets/js/scripts.js"></script>
+		<!--[if lt IE 7 ]>
+		    <script src="/js/libs/dd_belatedpng.js"></script>
+		    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+		<![endif]-->
+	</body>
+</html>

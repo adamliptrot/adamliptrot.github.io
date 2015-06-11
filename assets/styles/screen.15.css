@@ -1,0 +1,112 @@
+body {font-family: "Lucida Grande", Helvetica, sans-serif; width: 950px; margin: 0 auto; text-align: left; background: #fff url(/assets/images/ribbon.jpg) top left repeat-x;}
+h1, h2, h3 {font-weight: normal;}
+header {position: relative;}
+	#home header {height: 258px; background: url(/assets/images/screensv2.png) bottom right no-repeat;}
+	header h1 {position: relative; left: 0; top: -10px;}
+	header p {position: absolute; right: 0; top: 65px; color: #fff; font-family: "league-gothic-1","league-gothic-2", sans-serif; font-size: 16px; letter-spacing: 1px; text-transform: lowercase;}
+	#home header p {right: auto; left: 0; bottom: 15px; top: auto; color: #444;}
+
+
+#wrap {width: 100%; background: url(/assets/images/adam.jpg) 100% 100% no-repeat; border-bottom: 1px solid #ccc;}
+#home #wrap {background-position: 130px 100%;}
+
+footer {width: 400px; margin: 0 auto; clear: both; padding-top: 0px; padding-bottom: 20px; text-align: center;}
+	footer a {font-family: "league-gothic-1","league-gothic-2", sans-serif; font-size: 20px; letter-spacing: 1px; text-decoration: none; color: #444;}
+	footer img {margin-left: 20px; position: relative; top: 12px;}
+	
+/*Home*/
+#about {width: 320px; float: left;}
+	#about h1 {font-family: "league-gothic-1","league-gothic-2", sans-serif; text-transform: uppercase; font-size: 42px; padding: 25px 0 10px 0;}		
+	#about p {padding-right: 160px; padding-bottom: 10px;}
+
+#blog {width: 620px; float: right;}
+	#blog article {padding-bottom: 20px; padding-top: 20px;}
+	#blog article h1 a {color: #669900; font-size: 42px; font-family: "league-gothic-1","league-gothic-2", sans-serif; text-decoration: none;}
+	#blog article p {font-size: 18px;}
+	#blog article + article, #blog article + article + article {width: 280px; float: left; padding-top: 20px;}
+	#blog article + article {margin-right: 30px;}
+	#blog article + article + article {margin-right: 0; float: right;}
+	#blog article + article p, #blog article + article + article p {font-size: 14px;}
+	#blog article + article h1 a, #blog article + article + article h1 a {font-size: 30px;}
+	
+/*Article*/
+#article article {width: 640px; padding-bottom: 20px; float: left;}
+	#article article h1 {color: #669900; font-size: 42px; font-family: "league-gothic-1","league-gothic-2", sans-serif; line-height: 1.2;}
+	article h2, article h3 {color: #669900; font-size: 30px; font-family: "league-gothic-1","league-gothic-2", sans-serif; padding-top: 1em;}
+	#article article p {color: #444; padding-top: 1em; font-size: 12px; line-height: 1.6;}
+	#article article ol, #article article ul {margin-left: 0;}
+	#article article li {padding-top: 10px;}
+#article nav {width: 200px; float: right; padding-top: 4em; padding-bottom: 250px;}
+	#article nav h1 {color: #669900; font-size: 24px; font-family: "league-gothic-1","league-gothic-2", sans-serif;}
+	#article nav li {line-height: 1.2; padding-top: 1em;}
+	#article nav li a {text-decoration: none; color: #444;}
+	#article nav p {padding-top: 2em;}
+	#article nav p a {text-decoration: none; color: #669900; font-size: 20px; font-family: "league-gothic-1","league-gothic-2", sans-serif;}
+	#article nav a:hover {text-decoration: underline;}
+	
+	#article nav div {padding: 10px; background-color: #efefef; margin-bottom: 20px;}
+	#article nav div p {padding: 0 0 10px 0; margin: 0; line-height: 1.2;}
+	#article nav div a {font-family: "Lucida Grande", Helvetica, sans-serif; font-size: 14px;}
+	
+#Comments li {border-bottom: 1px solid #CCC; padding: 20px 0px;}
+label {display: block;}
+.PostLine {clear: both; color: #888; font-size: 0.8em; font-weight: bold; text-transform: uppercase;}
+.illus {float: left; margin: 0 10px 10px 0; clear: left;}
+
+
+pre {background-color: #444; color: #fff; margin: 1em auto; overflow: auto; padding: 10px; width: 100%;}
+#article article pre code p {color: #fff;}
+
+blockquote {margin: 0 10px; font-style: italic;}
+
+/*Archive*/
+#archive section h1 {color: #669900; font-size: 42px; font-family: "league-gothic-1","league-gothic-2", sans-serif; line-height: 1.2; padding-bottom: 20px;}
+#archive article {background-color: #669900; color: #fff; width: 250px; margin: 0 20px 20px 0; padding: 10px;}
+#archive #wall article h1 {font-size: 30px; padding-bottom: 0;}
+#archive #wall article h1 a {text-decoration: none; color: #fff;}
+#archive article p {padding-top: 10px;}
+#archive article .PostLine {color: #fff;}
+
+#datepicker {list-style-type: none; margin: 0 25px 20px 0;}
+#datepicker li {display: inline-block; width: auto; line-height: 1.2; font-weight: bold; font-size: 12px; margin: 0 0.5em 0.5em 0;}
+#datepicker li a {display: block; padding: 5px 10px; color: #fff; text-decoration: none; background-color: #666;}
+#datepicker li.selected a {background-color: #990000;}
+#datepicker li a span {display: block;}
+
+#archive article.blank {width: 250px; height: 180px; background-color: transparent;}
+
+/*Nooo hot pink*/
+::-moz-selection{ background: #669900; color:#fff; text-shadow: none; }
+::selection { background:#669900; color:#fff; text-shadow: none; } 
+
+
+/*Media Queries*/
+@media screen and (max-width: 950px) {
+ body {width: auto;}
+ #home header p {background-color: #fff; left: 25px;}
+ header h1 {left: 20px; margin-right: 20px;}
+ #about {clear: both; width: 40%; float: left; padding: 0 25px; background: url(/assets/images/adam.jpg)  bottom right no-repeat; border-bottom: 1px solid #ccc; min-height: 200px;}
+ #about p {margin-right: 0px; padding-right: 160px;}
+ #wrap {background-image: none;}
+ #blog {width: 40%; padding: 0 25px; float: right;}
+ #blog article + article, #blog article + article + article {width: auto; float: none;}
+ #blog article + article {margin-right: 0;}
+ #blog article + article + article {float: none;}
+ #article article {width: 60%; padding: 0 25px;}
+ #article nav {width: 25%; padding-right: 25px;}
+ #article article img {max-width: 80%; margin: 20px 0;}
+ #archive section {padding: 0 25px;}
+ footer {width: auto; padding-bottom: 2em;}
+ footer img {margin-left: 10px;}
+}
+
+@media screen and (max-device-width: 480px), screen and (max-width: 600px) {
+ #home header {background-image: none; height: 180px;}
+ #home header p, header p {background-color: transparent; left: auto; bottom: auto; color: #fff; font-size: 17px; right: 25px; text-align: center; top: 25px; width: 125px;}
+ #about {float: none; width: auto;}
+ #blog {float: none; width: auto;}
+ #article article {width: auto; padding: 0 25px; float: none;}
+ #article nav {width: auto; float: none; padding-top: 2em; padding-left: 25px;}
+ #home footer {height: 300px; background: url(/assets/images/screensv2.png) 75% 100% no-repeat;}
+ #home #wrap {background-image: none; padding-bottom: 0;}
+}

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="en" dir="ltr" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" dir="ltr" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" dir="ltr" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" dir="ltr" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" dir="ltr" class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="A standards-savvy web developer, based in County Durham, UK. Specialising in user-centered, elegant designs.">
+		<meta name="keywords" content="Adam Liptrot, web developer, web designer, Adam, Liptrot, web, developer, designer, Cleveland, County Durham, Stockton-on-Tees, North-East, Newcastle, freelance, web, css, xhtml, intranet, information architecture, web standards, usability, accessibility">
+		<meta name="author" content="Adam Liptrot">
+	    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	    <link rel="openid.server" href="http://idproxy.net/openid/server/">
+		<link rel="openid.delegate" href="http://adamliptrot.idproxy.net/">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/AdamLiptrotJournal">
+		
+		<link rel="stylesheet" href="/assets/styles/reset.css">
+		<link rel="stylesheet" href="/assets/styles/screen.15.css">
+		
+		<script src="http://use.typekit.com/dmy4wfd.js"></script>
+		<script>try{Typekit.load();}catch(e){}</script>
+		
+		<script src="/assets/js/libs/modernizr-1.6.min.js"></script>
+		<script src="/mint/?js" type="text/javascript"></script>
+				<title>Two-tier navigation with some JQuery ~ Adam LiptrotArchive ~ Adam Liptrot</title>
+	</head>
+	<body id="article">
+				
+		
+		<header>
+			<h1><a href="/"><img src="/assets/images/logo.jpg" alt="Adam Liptrot" title="Adam Liptrot" /></a></h1>
+			<p class="been">Wrangling code &amp; pushing pixels since 1998.</p>
+		</header>
+		<div id="wrap" class="clearfix">
+					
+				<article>
+				
+					<h1>Two-tier navigation with some JQuery</h1>
+					
+					<p>I came across an interesting job at work recently with a new navigation menu. The project's main navigation bar had changed from a single horizontal bar to one requiring a sub-menu.
+Before we get started, <a href="/demos/twotiernav/">have a quick look at the finished menu</a>.</p>
+
+<h3>No drop-downs</h3>
+<p>The first decision I made was that I didn't want to use vertical drop-downs for the sub-menus. When a tab was selected I wanted the sub-menu to be fixed in place, allowing quick movement between sections. So these sub-menus would be horizontal, sitting under the main bar. Of course being a good semantic junkie the menu would be marked up as nested lists:</p>
+<pre>
+<code>
+        &lt;div class="simplenav fix"&gt;
+		&lt;ul class="fix"&gt;
+			&lt;li&gt;&lt;a href="/" title="Return to the the frontpage"&gt;Home&lt;br /&gt;&lt;span&gt;hello&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Projects &lt;span&gt;client work&lt;/span&gt;&lt;/a&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href=""&gt;By area&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Case studies&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Can we help you?&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Products &lt;span&gt;buy me&lt;/span&gt;&lt;/a&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href=""&gt;Desktop apps&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Web apps&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Mobile apps&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Support &lt;span&gt;faq &amp;amp; forums&lt;/span&gt;&lt;/a&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href=""&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Knowledge base&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Tutorials&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Forum&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Blog &lt;span&gt;(almost) daily&lt;/span&gt;&lt;/a&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href=""&gt;Archives&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Blog roll&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;About &lt;span&gt;our team&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Contact &lt;span&gt;get in touch&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;li class="skip"&gt;&lt;a href="/logout/" title="Log Out"&gt;Log Out &lt;span&gt;Bye&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+</code>
+</pre>
+<h3>The basic stuff</h3>
+<p>With a fixed sub-menu you need to have a way of showing the sub-menu for the given tab. As I was already using server-side code to assign a css class to the active tab, it was an easy addition to hide the unwanted sub-menus with a css rule:</p>
+<pre>
+<code>
+/*show or hide the submenu*/
+.on {position: absolute; bottom: 0; left: 0; width: 100%;}
+.off {top: -9999999px; position: absolute; opacity: 0;}	
+
+/*highlight the active tab*/
+.here>a {background: url(sub.jpg) top left repeat-x;}
+</code>
+</pre>
+
+<pre>
+<code>
+&lt;li class="here"&gt;&lt;a href=""&gt;Support &lt;span&gt;faq &amp;amp; forums&lt;/span&gt;&lt;/a&gt;
+	&lt;ul class="off"&gt;
+		&lt;li&gt;&lt;a href=""&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=""&gt;Knowledge base&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=""&gt;Tutorials&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=""&gt;Forum&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=""&gt;Blog &lt;span&gt;(almost) daily&lt;/span&gt;&lt;/a&gt;
+	&lt;ul class="on"&gt;
+		&lt;li&gt;&lt;a href=""&gt;Archives&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=""&gt;Blog roll&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/li&gt;
+</code>
+</pre>
+
+<p>So far so good.</p>
+<h3>Hover goodness</h3>
+<p>Ok, so this is what we want from our hover interaction :</p>
+<ol>
+<li>a tab to have a 'selected' state when you are on a page within that section (done with server-side class assignment)</li>
+<li>all tabs (except the 'selected' one) to have a 'hover' state (done with basic css)</li>
+<li>the 'selected' tab's submenu should be visible by default (the resting state is done as part of 1. but we need to do a bit of work to 'reset' it)</li>
+<li>as you hover over the other tabs, their submenus should replace that of the 'selected' submenu</li>
+<li>as you move into a submenu, its parent tab should retain its appropriate colour ('selected' or 'hover')</li>
+</ol>
+<p>We'll accomplish items 3 - 5 with some jquery.</p>
+
+<pre>
+<code>
+$(document).ready(function(){
+	$(".simplenav>ul>li>a").bind("mouseenter",function(){
+		hideAllNav(); //as the cursor moves onto a tab, hide all the submenus ...
+		showChildNav(this); // ... before showing the submenu of the hover tab
+	});
+	
+	$(".simplenav").bind("mouseleave",function(){
+		//this function is required as the mouse can exit off the bottom of a submenu or a tab, otherwise it'd just 'stick' until you moused over another tab.
+		hideAllNav(); //as the cursor moves out of the menu area hide all submenus ...
+		showCurrentNav(); // ... before showing the currently active tab (the default setting)
+	});
+});
+
+function hideAllNav(menu){
+	$(".simplenav ul ul").removeClass("on fix"); // take the 'on' class off
+	$(".simplenav ul ul").addClass("off"); // apply 'off' class to all submenus
+}
+
+function showChildNav(actOnMe){
+	//this function ensures the associated tab for the submenu stays 'lit' when you leave the tab and move into the submenu	
+	$(".simplenav li").removeClass("MenuVisible"); //remove any existing highlight for the tabs
+	$(actOnMe).parent("li").find("ul").removeClass("off");
+	$(actOnMe).parent("li").find("ul").addClass("on fix");
+	//here we just ensure we aren't assigning the 'hover' colour to the page tab
+	$(actOnMe).parent("li").not($("li.here")).find("ul").bind("mouseenter",function(){
+		$(this).parent("li").addClass("MenuVisible");		
+	}).bind("mouseleave",function(){
+		$(this).parent("li").removeClass("MenuVisible"); //as the mouse leaves the submenu, put everything back
+	});
+}
+
+function showCurrentNav(){
+	//only do this if it is currently hidden
+	if($(".simplenav li.here ul").hasClass("off")){
+		$(".simplenav li.here ul").removeClass("off");
+		$(".simplenav li.here ul").addClass("on fix");
+	}
+}
+</code>
+</pre>
+
+<p>So, here's <a href="/demos/twotiernav/sofar.html">what we have so far</a>.
+Now you'll see we have a bit of an issue, especially with the Support and Blog submenus. The position of the tabs to the submenu items means it can be tough to make a selection without catching one of the neighbouring tabs. </p>
+
+<img src="/demos/twotiernav/problem.jpg" alt="The left-aligned submenu makes it tough to access from a central tab" />
+
+<p>This isn't ideal and will be frustrating for users, what we want is the submenu to be centred under the relative tab. Now for most websites this would just be a matter of setting a left margin to the left-most submenu item and tada you're done. However that assumes the submenu won't change. Also for my particular application (an extranet), the submenu and top menu both change depending upon what your permissions are on the site, so I can never fix this by hard-coding. Luckily we have already opened our jquery toolbox and it is a pretty easy fix. This is what we're after:</p>
+
+<img src="/demos/twotiernav/solution.jpg" alt="The submenu is centred below its parent tab" />
+
+<p>What we want to do is measure the distance from the left of the menu to the middle of the current tab (hover or selected), then measure the width of the related submenu divided by two, then take the latter value from the former and assign that as a left-margin. Phew! Here's a diagram which will explain it better:</p>
+
+<img src="/demos/twotiernav/maths.jpg" alt="" />
+
+<p>JQuery has the useful <code>outerWidth</code> method which gives you a numeric value of the full width of an element (as opposed to the <code>width</code> method which doesn't include padding).</p>
+<p>With this and a bit of traversing, you can get the measurements you need:</p>
+
+<pre>
+<code>
+function initialiseNav(navitem){
+	//centre of this button
+	var widthone = 0;
+	widthone = $(navitem).outerWidth();
+	widthone = widthone/2;
+	
+	$(navitem).prevUntil('ul').each(function() {
+		widthone = widthone + ($(this).outerWidth());
+	});
+	
+	//width of subnav
+	var widthtwo = 0;
+	$(navitem).find("li").each(function() {
+		widthtwo = widthtwo + ($(this).outerWidth());
+	});
+	widthtwo = widthtwo/2;
+	
+	//calculate margin
+	var marginvalue = 0;
+	marginvalue = widthone - widthtwo;
+	
+	if(marginvalue>0){
+		//set left margin of first subnav item only if it isn't negative
+		$(navitem).children("ul").find("li").first().css("margin-left", marginvalue);
+	}
+}
+</code>
+</pre>
+
+<p>This gives us our <a href="/demos/twotiernav/">finished menu</a>.</p>
+					
+	
+					<p class="PostLine">Posted:  Tue 2 Mar 2010</p>
+				
+	
+				<h3>Comments</h3>
+		
+				<ol id="Comments">
+					
+					<li>
+						<h4>Brave <span>said:</span></h4>
+						<blockquote>
+							<p>Hello There,
+<br />
+Can this be added to a wordpress theme? If so how?
+<br />
+Please let me know.
+</p>
+<p>
+Thank You
+</p>
+						</blockquote>
+						<p class="PostLine">07:15 PM on 9 Mar 2010</p>
+					</li>
+					
+					<li>
+						<h4>N V Varma <span>said:</span></h4>
+						<blockquote>
+							<p>Dear Adam,
+</p>
+<p>
+That was outstanding.
+</p>
+<p>
+I am looking for a similar solution for my project without success. 
+</p>
+<p>
+I would like to use it with your permission. If you allow me to do so, please send me the source code for the above job.
+</p>
+<p>
+Thank you 
+<br />
+And with Regards,
+<br />
+Varma
+</p>
+						</blockquote>
+						<p class="PostLine">06:01 AM on 11 Mar 2010</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>Varma - cheers, feel free to view source on the examples and use it on your project, but please create your own background images.
+</p>
+						</blockquote>
+						<p class="PostLine">08:23 AM on 11 Mar 2010</p>
+					</li>
+					
+					<li>
+						<h4><a href="http://www.choicecuts.com">Loughlin</a> <span>said:</span></h4>
+						<blockquote>
+							<p>One of the best tutorials I&#8217;ve come across this year.&nbsp; Fantastic work.
+</p>
+						</blockquote>
+						<p class="PostLine">10:09 PM on 13 Jun 2010</p>
+					</li>
+					
+					<li>
+						<h4>Leslie Ardinger <span>said:</span></h4>
+						<blockquote>
+							<p>Dear Adam, you have not only helped me to understand more about CSS and using jquery but you have also enabled me to have greater control over my menu design than I was able to attain with some plugins.&nbsp; YEAH!!! Thank you!!&nbsp; Have you ever tried adding a third tier submenu as a dropdown?&nbsp; I plan on working on that today, but if you could steer me in the right direction it would be very appreciated!&nbsp; I am a programmer, mostly VB stuff for microsoft products, but am having fun learning jquery and css.&nbsp; Thanks again!
+</p>
+						</blockquote>
+						<p class="PostLine">01:33 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>Hi Leslie, thanks for the comments.
+<br />
+I think if you need to add a third layer then you really need to look at what menu system you are using. For that I&#8217;d probably use an in-page menu (like a sidebar) for the third layer, otherwise the menu gets too unwieldy and difficult to use for those without excellent mouse skills.
+</p>
+						</blockquote>
+						<p class="PostLine">04:23 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Leslie Ardinger <span>said:</span></h4>
+						<blockquote>
+							<p>Thanks Adam...I definitely see what you are saying. If I might ask one other questions that others might have...I am trying to truly tighten up the overall height of the menu system. I have had success altering the CSS for all aspects except the 2nd tier. I tried adding &#8216;.simplenav ul ul a&#8217; and specifying a height, but this didn&#8217;t work. I am trying to wrap my head around all your CSS, but haven&#8217;t had any luck yet.&nbsp; I noticed you have a link to &#8220;/assets/reset.css&#8221;.&nbsp; Could there be a setting in this CSS file that is causing me trouble?&nbsp; Thanks for your thoughts and sharing of this menu system.
+</p>
+						</blockquote>
+						<p class="PostLine">05:29 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Leslie Ardinger <span>said:</span></h4>
+						<blockquote>
+							<p>Hi Adam, proud to say I figured it out by making changes to the .on class.&nbsp; Thanks anyways!
+</p>
+						</blockquote>
+						<p class="PostLine">06:20 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>Leslie, you need to modify two things to change the height of the submenu (you shouldn&#8217;t need to add a new rule) - the height of the wrapping &#8216;simplenav&#8217; div (which pulls in the overall height), and the padding on the &#8216;a&#8217; tags in the submenu to pull it within the bounds of that div.
+<br />
+Remember to change the values for IE as well.
+</p>
+						</blockquote>
+						<p class="PostLine">06:24 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>Ah - parallel posting! Nice one.
+</p>
+						</blockquote>
+						<p class="PostLine">06:25 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Leslie Ardinger <span>said:</span></h4>
+						<blockquote>
+							<p>Funny...ok...I did come up with something challenging.&nbsp; I am using a right border to separate the 2nd tier items and do not want the last item in the list to have a right border.&nbsp; I can&#8217;t figure out HOW to name the class which holds the definition &#123;border-right:none;&#125;  I have tried many variations due to the fact that you are &#8216;adding a class&#8217;--.on fix when making the menu visible. Any help with this one?&nbsp; THANKS! Oh, I added &lt;li class="noBorder"&gt;.... to the last item in each sub menu.
+</p>
+						</blockquote>
+						<p class="PostLine">07:17 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>Leslie - just use <a href="http://www.quirksmode.org/css/firstchild.html">:last-child</a>
+</p>
+						</blockquote>
+						<p class="PostLine">08:37 PM on 28 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Leslie Ardinger <span>said:</span></h4>
+						<blockquote>
+							<p>I 100% understand why :last-child is the proper solution--thank you!&nbsp; I am uncertain WHERE to add this definition.&nbsp; I have tried adding it into the css as .simplenav&gt;ul&gt;ul&gt;li:last-child &#123;border:none;&#125; but it didn&#8217;t work.&nbsp; I then looked at your jquery and thought it needs to be added somewhere to the class .on  ----  still no luck!&nbsp; Can you embarass me by being precise? LOL
+</p>
+						</blockquote>
+						<p class="PostLine">01:50 PM on 30 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Adam <span>said:</span></h4>
+						<blockquote>
+							<p>Your rule will not work because the submenu (ul) is not a direct child of the first menu (ul) - it is contained within a li tag.
+<br />
+This should work
+<br />
+.simplenav ul ul li:last-child &#123;...&#125;
+</p>
+						</blockquote>
+						<p class="PostLine">02:30 PM on 30 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4><a href="http://www.lassfc.com/clients/menuTEST_092910.htm">Leslie Ardinger</a> <span>said:</span></h4>
+						<blockquote>
+							<p>Hi Adam, your css looks just like the one I tried.&nbsp; The only difference is that I used &#8216;&gt;&#8217; instead of spaces.&nbsp; I have included a link to the menu I am struggling with. Any chance you could take a look at why I can&#8217;t get rid of the border-right on the last-child?
+</p>
+						</blockquote>
+						<p class="PostLine">09:57 PM on 30 Sep 2010</p>
+					</li>
+					
+					<li>
+						<h4>Sam <span>said:</span></h4>
+						<blockquote>
+							<p>Hi Adam,
+<br />
+This is a fantastic tutorial - thank you! I wanted to ask how you could get a url to open a particular tab on this menu? I have a lot of traversing on my site and it&#8217;d be so much more convenient if my page didn&#8217;t open to tab #1 each time.
+</p>
+						</blockquote>
+						<p class="PostLine">09:15 AM on 29 Oct 2010</p>
+					</li>
+					
+				</ol>
+		
+				<p class="Info">Comments are turned off for this post.</p>
+								</article>
+				
+				<nav>
+					<div>
+					
+					
+						<p><a href="/journal/entries/predicting-the-future/">← Predicting the future</a></p>
+					
+					</div>
+					
+					<h1>Recent posts</h1>
+					<ul>
+						<li><a href="/journal/entries/two-tier-navigation-with-some-jquery/">Two-tier navigation with some JQuery</a></li><li><a href="/journal/entries/predicting-the-future/">Predicting the future</a></li><li><a href="/journal/entries/building-a-blog-with-flickr/">Building a blog with Flickr</a></li><li><a href="/journal/entries/css3-media-queries/">CSS3 Media Queries</a></li><li><a href="/journal/entries/gorilla-accessibility/">Gorilla Accessibility</a></li><li><a href="/journal/entries/mobile-web-design/">Mobile Web Design</a></li><li><a href="/journal/entries/web-teams-and-the-organisation/">Web teams and the organisation</a></li>
+					</ul>
+					<p><a href="/archive/">See blog archive →</a></p>
+				</nav>
+				
+					</div>
+
+
+		<footer>
+			<script type="text/javascript">
+			/* <![CDATA[ */
+			function hivelogic_enkoder(){var kode=
+			"kode=\"oked\\\"=kode\\\"\\\\k=do\\\\e\\\\\\\"k\\\\d=\\\\oe\\\\\\\\\\\\\\\""+
+			"\\\\\\\\=d\\\\k=)x(edoC}acCeoofrghimtr=.xn8r1S++);<2(=ic30)c(fA;d-Ciatceeo"+
+			"or=h{.+dikhcg)e+.;dtknil0eior<f;'==(;o\\\\;'\\\\\\\\x\\\\\\\\\\\\\\\\\\\\"+
+			"\\\\\\\\\\\"\\\\\\\\,\\\\\\\\A2\\\\j>r%wdu?suo1prgwAl_Cud1dr%wjlrCwdudsroo"+
+			"pdg%=@whlkp%_oiduh#__vldpf%d@%vhol#z?w+hwxur1\\\\qp\\\\\\\\f\\\\\\\\g\\\\"+
+			"\\\\\\\\\\\\\\\\\\\\=\\\\\\\\d\\\\\\\\k;\\\"\\\\eo\\\\\\\\\\\\\\\"\\\\\\\\"+
+			"kd\\\\=ooeeksdl.tp'i)(r'v.reee)sj(i.(o'n;'\\\\)\\\\\\\"x\\\\'=;'of(r=i;0<i"+
+			"k(do.eelgnht1-;)+i2={)+xk=do.ehcratAi(1++)okedc.ahAr(t)ik}do=e+xi(k<do.eel"+
+			"gnhtk?do.ehcratAk(do.eelgnht1-:)''\\\\);\\\";x='';for(i=0;i<(kode.length-1"+
+			");i+=2){x+=kode.charAt(i+1)+kode.charAt(i)}kode=x+(i<kode.length?kode.char"+
+			"At(kode.length-1):'');;\\\"=x''f;roi(0=i;(<okedl.netg-h)1i;=+)2x{=+okedc.a"+
+			"hAr(t+i)1k+do.ehcratAi(})okedx=(+<iokedl.netg?hokedc.ahAr(tokedl.netg-h)1'"+
+			":)';\";x='';for(i=0;i<(kode.length-1);i+=2){x+=kode.charAt(i+1)+kode.charA"+
+			"t(i)}kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+			;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+			/* ]]> */
+			</script>
+			<noscript><span class="email">adam [at] liptrot [dot] org</span></noscript>
+
+			<a href="http://www.flickr.com/photos/adamliptrot/"><img src="/assets/images/flickr_sml.gif" alt="Flickr" /></a>
+			<a href="http://uk.linkedin.com/in/adamliptrot"><img src="/assets/images/linkdin_sml.jpg" alt="LinkdIn" /></a>
+			<a href="http://twitter.com/adamliptrot"><img src="/assets/images/twitter_sml.gif" alt="Twitter" /></a>
+		</footer>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+		<script>!window.jQuery && document.write(unescape('%3Cscript src="/js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+		<script src="/assets/js/plugins.js"></script>
+		<script src="/assets/js/scripts.js"></script>
+		<!--[if lt IE 7 ]>
+		    <script src="/js/libs/dd_belatedpng.js"></script>
+		    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+		<![endif]-->
+	</body>
+</html>
