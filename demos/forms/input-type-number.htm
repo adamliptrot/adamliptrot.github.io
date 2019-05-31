@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1">
+        <title>Input types</title>
+        <style>
+            body {
+                padding: 1rem;
+                font-size: 1.6rem;
+                font-family: Georgia, serif;
+                background: #efefef;
+            }
+            details {
+                margin: 1rem 0 4rem;
+            }
+            img {
+                max-width: 100%;
+                border: 1px solid #000;
+            }
+            .wrap {
+                max-width: 600px;
+                margin: 0 auto;
+                background: #fff;
+                padding: 2rem;
+            }
+            label {
+                display: block;
+                margin-bottom: 0.25em;
+            }
+            button,
+            input {
+                font-size: 1.6rem;
+                width: 100%;
+                border: 1px solid #333;
+            }
+            input:focus {
+                outline: 2px solid yellow;
+            }
+            button {
+                background: #333;
+                color: #efefef;
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+
+            <p><strong>Inputmode numeric:</strong> Numeric input keyboard; all that is needed are the digits 0 through 9. Devices may or may not show a minus key.</p>
+            <p><strong>Inputmode tel:</strong> A telephone keypad input, including the digits 0 through 9, the asterisk ("*"), and the pound ("#") key.</p>
+            <p><strong>Inputmode decimal:</strong> Fractional numeric input keyboard containing the digits and the appropriate separator character for the user's locale (typically either "." or ","). Devices may or may not show a minus key.</p>
+
+            <hr />
+
+            <form method="get" action="" novalidate>
+            <div>
+                <label for="input1">Text</label>
+                <input type="text" name="input1" id="input1" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="01-text/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="01-text/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="01-text/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="01-text/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input2">Text with pattern</label>
+                <input type="text" name="input2" id="input2" pattern="[0-9]+" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="02-text-with-pattern/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="02-text-with-pattern/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="02-text-with-pattern/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="02-text-with-pattern/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input3">Text with inputmode numeric</label>
+                <input type="text" name="input3" id="input3" inputmode="numeric" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="03-text-inputmode-numeric/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="03-text-inputmode-numeric/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="03-text-inputmode-numeric/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="03-text-inputmode-numeric/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input3a">Text with inputmode decimal</label>
+                <input type="text" name="input3a" id="input3a" inputmode="decimal" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="04-text-inputmode-decimal/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="04-text-inputmode-decimal/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="04-text-inputmode-decimal/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="04-text-inputmode-decimal/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input4">Text with inputmode numeric and pattern</label>
+                <input type="text" name="input4" id="input4" inputmode="numeric" pattern="[0-9]+" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="05-text-inputmode-numeric-and-pattern/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="05-text-inputmode-numeric-and-pattern/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="05-text-inputmode-numeric-and-pattern/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="05-text-inputmode-numeric-and-pattern/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input5">Number</label>
+                <input type="number" name="input5" id="input5" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="06-number/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="06-number/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="06-number/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="06-number/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input7">Number with inputmode numeric</label>
+                <input type="number" name="input7" id="input7" inputmode="numeric" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="07-number-inputmode-numeric/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="07-number-inputmode-numeric/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="07-number-inputmode-numeric/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="07-number-inputmode-numeric/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input6">Tel</label>
+                <input type="tel" name="input6" id="input6" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="08-tel/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="08-tel/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="08-tel/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="08-tel/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <div>
+                <label for="input7">Tel with inputmode numeric</label>
+                <input type="tel" name="input7" id="input7" inputmode="numeric" />
+            </div>
+
+            <details>
+                <summary>Mobile browser support</summary>
+                <figure>
+                    <figcpation>Android S5 Chrome</figcaption>
+                    <img src="09-tel-inputmode-numeric/Android-S5-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>Pixel 3 Chrome</figcaption>
+                    <img src="09-tel-inputmode-numeric/Pixel-3-Chrome.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 5S Safari</figcaption>
+                    <img src="09-tel-inputmode-numeric/iPhone-5S-Safari.png" alt="">
+                </figure>
+                <figure>
+                    <figcpation>iPhone 8 Safari</figcaption>
+                    <img src="09-tel-inputmode-numeric/iPhone-8-Safari.png" alt="">
+                </figure>
+            </details>
+
+            <button>Submit</button>
+            </form>
+
+        </div>
+    </body>
+</html>
