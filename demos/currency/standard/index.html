@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://localhost:3000/hmrc-design-patterns/currency-input/simple/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example – HMRC Design Patterns – Design resources for HMRC – GOV.UK</title>
+
+    <link type="text/css" rel="stylesheet" href="../patterns/hmrc-design-system.min.css" media="all">
+  </head>
+
+  <body class="app-example-page">
+
+
+<div class="govuk-form-group">
+    <label class="govuk-label" for="currency">
+    How much does your employer pay towards this?
+  </label>
+
+
+
+        <span id="currency-hint" class="govuk-hint">
+    Enter the amount in pounds and pence
+  </span>
+        <div class="hmrc-currency-input__wrapper">
+            <span class="hmrc-currency-input__unit" aria-hidden="true">£</span>
+            <input class="govuk-input govuk-input--width-10" id="currency" name="currency" type="text" aria-describedby="currency-hint" autocomplete="off">
+
+        </div>
+    </div>
+
+
+
+
+<button type="submit" class="govuk-button">
+  Continue
+</button>
+<script src="./Example – HMRC Design Patterns – Design resources for HMRC – GOV.UK_files/livereload.js" async="" defer=""></script>
+
+  <script>
+    // This prevents the account dropdown from closing and triggering
+    // an infinite loop on the auto iframe resize
+    // Can be removed on completion of https://jira.tools.tax.service.gov.uk/browse/PLATUI-117
+    function getWindowHeight () {
+     return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+    }
+
+    var initialHeight = getWindowHeight()
+
+    window.addEventListener('resize', function (event) {
+      if (getWindowHeight() !== initialHeight) {
+        event.stopImmediatePropagation()
+        initialHeight = getWindowHeight()
+      }
+    });
+  </script>
+  <script src="../patterns/hmrc-design-system.js"></script>
+
+</body></html>
