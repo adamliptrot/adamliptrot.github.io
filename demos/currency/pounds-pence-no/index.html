@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://localhost:3000/hmrc-design-patterns/currency-input/pounds-and-pence/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example – HMRC Design Patterns – Design resources for HMRC – GOV.UK</title>
+
+    <link type="text/css" rel="stylesheet" href="../patterns/hmrc-design-system.min.css" media="all">
+  </head>
+
+  <body class="app-example-page">
+
+
+
+
+
+
+            <div class="govuk-form-group"><fieldset class="govuk-fieldset" role="group">
+  <legend class="govuk-fieldset__legend">
+    How much does your employer pay towards this?
+  </legend>
+                    <span class="govuk-hint">
+    Enter the exact amount
+  </span>
+
+
+            <div class="hmrc-currency-input">
+                <div class="hmrc-currency-input__group">
+                    <div class="hmrc-currency-input__wrapper">
+                        <label class="govuk-visually-hidden" for="currency-pounds">This is the first input</label>
+                        <span class="hmrc-currency-input__unit" aria-hidden="true">£</span>
+                        <input class="govuk-input govuk-input--width-5" id="currency-pounds" name="currency-pounds" type="tel" autocomplete="off">
+                    </div>
+                </div>
+                <div class="hmrc-currency-input__group hmrc-currency-input__decimal" aria-hidden="true">
+                .
+                </div>
+                <div class="hmrc-currency-input__group">
+                    <div class="hmrc-currency-input__wrapper">
+                        <label class="govuk-visually-hidden" for="currency-pence">This is the second input</label>
+                        <input class="govuk-input govuk-input--width-4" id="currency-pence" name="currency-pence" type="tel" autocomplete="off">
+                        <span class="hmrc-currency-input__unit--pence" aria-hidden="true">p</span>
+                    </div>
+                </div>
+            </div>
+</fieldset>
+            </div>
+
+
+
+
+<button type="submit" class="govuk-button">
+  Continue
+</button>
+
+<p>Non-descriptiove labels, accessible name not obvious</p>
+</body></html>
