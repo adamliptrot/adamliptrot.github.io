@@ -7,22 +7,12 @@
     </head>
 
     <body>
+        <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
         <h1>Page 1</h1>
         <a href="#" class="govuk-back-link">Back</a>
 
 
         <p><a href="page2.html">Page 2</a></p>
-        <script>
-            var backLink = document.querySelector('.govuk-back-link');
-            if(backLink){
-                backLink.text = backLink.text + " (" + window.history.length + ")"
-                backLink.addEventListener('click', function(e){
-                    e.preventDefault();
-                    if (window.history && window.history.back && typeof window.history.back === 'function'){
-                        window.history.back();
-                    }
-                });
-            }
-        </script>
+        <script src="application.min.js"></script>
     </body>
 </html>
