@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <title>Table example</title>
+        <style>
+            html,
+            body {
+                background: #fcfcfc;
+                font-family: arial;
+                font-size: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            *,
+            *:before,
+            *:after {
+                box-sizing: border-box;
+            }
+
+            body {
+                line-height: 1.4;
+            }
+            .wrapper {
+                margin: 2em auto;
+                max-width: 1200px;
+            }
+            .govuk-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .govuk-list li {
+                margin-bottom: 0.5em;
+            }
+            table {
+                table-layout: fixed;
+                border-spacing: 0;
+                border-collapse: collapse;
+                margin-bottom: 4em;
+            }
+            th,
+            td {
+                padding: 10px 20px 10px 0;
+                border-bottom: 1px solid #b1b4b6;
+                text-align: left;
+                vertical-align: top;
+            }
+
+
+            .hmrc-responsive-table {
+                width: 100%;
+            }
+            @media screen and (min-width: 1000px) {
+                .hmrc-responsive-table {
+                    table-layout: fixed;
+                }
+            }
+
+            thead {
+                border: 0;
+                clip: rect(0 0 0 0);
+                -webkit-clip-path: inset(50%);
+                clip-path: inset(50%);
+                height: 1px;
+                margin: 0;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+            @media screen and (min-width: 1000px) {
+                thead {
+                    clip: auto;
+                    -webkit-clip-path: none;
+                    clip-path: none;
+                    display: table-header-group;
+                    height: auto;
+                    overflow: auto;
+                    position: relative;
+                    width: auto;
+                }
+            }
+
+            tbody tr {
+                display: block;
+                margin-bottom: 1.5em;
+            }
+            tbody tr:last-child {
+                margin-bottom: 0;
+            }
+
+            @media screen and (max-width: 1000px) {
+                tbody tr {
+                    background-color: #fff;
+                    box-shadow: 0 4px 0 0 #d8dde0;
+                    padding: 0 0.5em;
+                }
+            }
+
+            @media screen and (min-width: 1000px) {
+                tbody tr {
+                    display: table-row;
+                }
+            }
+
+            th {
+                text-align: left;
+            }
+
+            td {
+                display: block;
+                display: flex;
+                justify-content: space-between;
+                min-width: 1px;
+                text-align: right;
+            }
+            @media screen and (min-width: 1000px) {
+                td {
+                    display: table-cell;
+                    text-align: left;
+                }
+            }
+
+            @media screen and (max-width: 1000px) {
+                td {
+                    padding-right: 0;
+                }
+                td:last-child {
+                    border-bottom: none;
+                }
+            }
+            @media screen and (max-width: 1000px) {
+                .hmrc-responsive-table__data {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .hmrc-responsive-table__heading {
+                display: block;
+                font-weight: 700;
+                padding-right: 1em;
+                text-align: left;
+            }
+            @media screen and (min-width: 1000px) {
+                .hmrc-responsive-table__heading {
+                    display: none;
+                }
+            }
+
+            @media screen and (min-width: 1000px) {
+                .hmrc-reponsive-table__numeric {
+                    text-align: right;
+                }
+            }
+            .table-foot {
+                border-bottom: 1px solid #bfc1c3;
+                display: flex;
+                font-weight: 700;
+                justify-content: space-between;
+                padding: 1em 0 75em;
+            }
+
+            .hmrc-responsive-table__value {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            @media screen and (min-width: 1000px) {
+                .u--w-10 {
+                    width: 10rem;
+                }
+                .u--w-15 {
+                    width: 15rem;
+                }
+                .u--w-20 {
+                    width: 20rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Table example</h1>
+            <table class="govuk-table hmrc-responsive-table" role="table">
+                <caption class="govuk-visually-hidden">Capital cities with table role</caption>
+                <thead role="rowgroup">
+                    <tr role="row">
+                        <th class="govuk-table__header" scope="col" role="columnheader">City</th>
+                        <th class="govuk-table__header" scope="col" role="columnheader">Country</th>
+                        <th class="govuk-table__header" scope="col" role="columnheader">Population</th>
+                        <th class="govuk-table__header" scope="col" role="columnheader">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Hamilton
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Bermuda
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            1.5 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Hamilton</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Hamilton</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Canberra
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Australia
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            4.5 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Canberra</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Canberra</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Amsterdam
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Netherlands
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            6.2 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Amsterdam</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Amsterdam</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Berlin
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Germany
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            8.7 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Berlin</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Berlin</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Copenhagen
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Denmark
+                        </td>
+                        <td class="govuk-table__cell" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            3.4 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="cell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Copenhagen</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Copenhagen</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <table class="govuk-table hmrc-responsive-table" role="grid">
+                <caption class="govuk-visually-hidden">Capital cities with grid role</caption>
+                <thead role="rowgroup">
+                    <tr role="row">
+                        <th class="govuk-table__header" scope="col" role="columnheader">City</th>
+                        <th class="govuk-table__header" scope="col" role="columnheader">Country</th>
+                        <th class="govuk-table__header" scope="col" role="columnheader">Population</th>
+                        <th class="govuk-table__header" scope="col" role="columnheader">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Hamilton
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Bermuda
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            1.5 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Hamilton</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Hamilton</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Canberra
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Australia
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            4.5 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Canberra</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Canberra</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Amsterdam
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Netherlands
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            6.2 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Amsterdam</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Amsterdam</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Berlin
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Germany
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            8.7 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Berlin</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Berlin</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr role="row">
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">City</span>
+                            Copenhagen
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Country</span>
+                            Denmark
+                        </td>
+                        <td class="govuk-table__cell" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Population</span>
+                            3.4 million
+                        </td>
+                        <td class="govuk-table__cell u--w-10" role="gridcell">
+                            <span class="hmrc-responsive-table__heading" aria-hidden="true">Actions</span>
+                            <ul class="govuk-list">
+                                <li><a href="#0">Edit<span class="govuk-visually-hidden"> Copenhagen</span></a></li>
+                                <li><a href="#0">Visit<span class="govuk-visually-hidden"> Copenhagen</span></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+</html>
