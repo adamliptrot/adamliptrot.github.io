@@ -2,6 +2,19 @@
 <html lang="en-GB">
 <head>
     <title>Speech</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 120%;
+            margin: 0 4rem;
+        }
+        .comment {
+            font-style: italic;
+        }
+        .comment + p {
+            margin-left: 2rem;
+        }
+    </style>
 </head>
 <body>
     <h1>Speak-as</h1>
@@ -10,37 +23,46 @@
     <p>They do not currently work with JAWS or NVDA on any browser.</p>
 
     <h2>Speak as digits example</h2>
-    <p>The following number will be read out as normal</p>
+    <p class="comment">The following number will be read out as normal</p>
     <p>1005600</p>
 
-    <p>The following number will be instructed to be read out as digits</p>
+    <p class="comment">The following number will be instructed to be read out as digits</p>
     <p style="speak-as: digits">1005600</p>
 
-    <p>Note, using speak as digits on an inline element currently makes it's parent speak as digits also. In the following phrase only the second number should be spoken as digits</p>
+    <p class="comment">The following reference will be read out as normal</p>
+    <p>10DIG05600L</p>
+
+    <p class="comment">The following reference will be instructed to be read out as digits</p>
+    <p style="speak-as: digits">10DIG05600L</p>
+
+    <p class="comment">Note, using speak as digits on an inline element currently makes it's parent speak as digits also. In the following phrase only the second number should be spoken as digits</p>
     <p>This is a number 90909 and so is <span style="speak-as: digits">1005600</span></p>
 
     <!-- <p>The following number will be instructed to be read out as digits</p>
     <p style="speak-as: digits">Twenty</p> -->
 
     <h2>Spell out example</h2>
-    <p>The following phrase will be read out as normal</p>
+    <p class="comment">The following phrase will be read out as normal</p>
     <p>Melbourne is a city in Australia</p>
 
     <!-- <p>In the following phrase the word city will be instructed to be read out louder</p>
     <p>Melbourne is a <span style="voice-volume: loud">city</span> in Australia</p> -->
-    <p>The following phrase will be instructed to be spelled out</p>
+    <p class="comment">The following phrase will be instructed to be spelled out</p>
     <p style="speak-as: spell-out">Melbourne</p>
 
-    <p>Note, using spell-out on an inline element currently makes it's parent spell out also. In the following phrase only Australia should be spelled out</p>
+    <p class="comment">The following reference will be instructed to be spelled out</p>
+    <p style="speak-as: spell-out">10DIG05600L</p>
+
+    <p class="comment">Note, using spell-out on an inline element currently makes it's parent spell out also. In the following phrase only Australia should be spelled out</p>
     <p>Melbourne is a city in <span style="speak-as: spell-out">Australia</span></p>
 
     <h2>Punctuation examples</h2>
-    <p>The following phrase will be read out as normal</p>
-    <p>Melbourne: (city in Australia)</p>
+    <p class="comment">The following phrase will be read out as normal</p>
+    <p>Melbourne is a city in Australia. It has a population of approx. 6 million people.</p>
 
-    <p>The following phrase will be instructed to be read out with punctuation</p>
-    <p style="speak-as: literal-punctuation">Melbourne: (city in Australia)</p>
+    <p class="comment">The following phrase will be instructed to be read out with punctuation</p>
+    <p style="speak-as: literal-punctuation">Melbourne is a city in Australia. It has a population of approx. 6 million people.</p>
 
-    <p>The following phrase will be instructed to be read out without punctuation</p>
-    <p style="speak-as: no-punctuation">Melbourne: (city in Australia)</p>
+    <p class="comment">The following phrase will be instructed to be read out without punctuation</p>
+    <p style="speak-as: no-punctuation">Melbourne is a city in Australia. It has a population of approx. 6 million people.</p>
 </body>
