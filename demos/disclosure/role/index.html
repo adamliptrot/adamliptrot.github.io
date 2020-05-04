@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>
+        Disclosure - role
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../govuk/assets/stylesheets/govuk-frontend-3.6.0.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <h1>Disclosure role</h1>
+
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary" role="button">
+            <span class="govuk-details__summary-text">
+                Help with nationality
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            We need to know your <a href="">nationality</a> so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        </div>
+    </details>
+
+    <script src="../../govuk/assets/javascripts/govuk-frontend-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        window.GOVUKFrontend.initAll()
+        });
+    </script>
+</body>
