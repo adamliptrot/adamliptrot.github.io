@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <title>Standard form elements</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 120%;
+            margin: 0 4rem;
+        }
+        main {
+            width: 60%;
+            max-width: 600px;
+        }
+        .field {
+            margin: 2em 0;
+        }
+        label {
+            display: block;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            -webkit-clip-path: inset(50%);
+            border: 0;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Standard form elements</h1>
+        <h2>Text input</h2>
+        <p>Label alongside input, hint via aria</p>
+
+        <div class="field">
+            <label for="hugo">Hugo</label>
+            <p id="hint-hugo">This is a hint for Hugo</p>
+            <input type="text" name="hugo" id="hugo" aria-describedby="hint-hugo" />
+        </div>
+
+        <h2>Text input</h2>
+        <p>Label alongside input with heading wrapping, hint via aria</p>
+
+        <div class="field">
+            <h3><label for="bob">Bob</label></h3>
+            <p id="hint-bob">This is a hint for Bob</p>
+            <input type="text" name="bob" id="bob" aria-describedby="hint-bob" />
+        </div>
+
+        <h2>Text input with visually hidden label</h2>
+        <p>Label alongside input with heading wrapping, hint via aria</p>
+
+        <div class="field">
+            <h3>Deckard</h3>
+            <label for="deckard" class="visually-hidden">Deckard</label>
+            <p id="hint-deckard">This is a hint for Deckard</p>
+            <input type="text" name="deckard" id="deckard" aria-describedby="hint-deckard" />
+        </div>
+
+        <h2>Fieldset with text fields, standard legend</h2>
+        <fieldset aria-describedby="names-hint">
+            <legend>Terminator</legend>
+            <p id="names-hint">This is a hint for Terminator</p>
+            <div class="field">
+                <label for="arnie">Arnie</label>
+                <input type="text" name="arnie" id="arnie" />
+            </div>
+
+            <div class="field">
+                <label for="linda">Linda</label>
+                <input type="text" name="linda" id="linda" />
+            </div>
+        </fieldset>
+
+        <h2>Fieldset with text fields, legend with heading</h2>
+        <fieldset aria-describedby="names-hint2">
+            <legend><h3>Aliens</h3></legend>
+            <p id="names-hint2">This is a hint for Aliens</p>
+            <div class="field">
+                <label for="ellen">Ellen</label>
+                <input type="text" name="ellen" id="ellen" />
+            </div>
+
+            <div class="field">
+                <label for="bishop">Bishop</label>
+                <input type="text" name="bishop" id="bishop" />
+            </div>
+        </fieldset>
+
+        <h2>Fieldset with text fields, legend with span</h2>
+        <fieldset aria-describedby="names-hint3">
+            <legend><span>Blade runner</span></legend>
+            <p id="names-hint3">This is a hint for Blade runner</p>
+            <div class="field">
+                <label for="rick">Rick</label>
+                <input type="text" name="rick" id="rick" />
+            </div>
+
+            <div class="field">
+                <label for="rachael">Rachael</label>
+                <input type="text" name="rachael" id="rachael" />
+            </div>
+        </fieldset>
+
+        <h2>Fieldset with text fields, legend visually hidden</h2>
+        <h3>Valerian</h3>
+        <fieldset aria-describedby="names-hint4">
+            <legend class="visually-hidden">Valerian</legend>
+            <p id="names-hint4">This is a hint for Valerian</p>
+            <div class="field">
+                <label for="cara">Cara</label>
+                <input type="text" name="cara" id="cara" />
+            </div>
+
+            <div class="field">
+                <label for="dane">Dane</label>
+                <input type="text" name="dane" id="dane" />
+            </div>
+        </fieldset>
+
+        <p>A bit of copy so we can test going backwards</p>
+    </main>
+</body>
+</html>
