@@ -128,6 +128,46 @@
             </div>
         </fieldset>
 
+        <h2>Fieldset with radio buttons, radio after label</h2>
+        <fieldset aria-describedby="names-hint5">
+            <legend>SciFi films</legend>
+            <p id="names-hint5">This is a hint for SciFi films</p>
+            <div class="field">
+                <label for="aliens">Aliens</label>
+                <input type="radio" name="films" id="aliens" />
+            </div>
+
+            <div class="field">
+                <label for="bladerunner">BladeRunner</label>
+                <input type="radio" name="films" id="bladerunner" />
+            </div>
+
+            <div class="field">
+                <label for="valerian">Valerian</label>
+                <input type="radio" name="films" id="valerian" />
+            </div>
+        </fieldset>
+
+        <h2>Fieldset with radio buttons, radio before label</h2>
+        <fieldset aria-describedby="names-hint6">
+            <legend>SciFi films</legend>
+            <p id="names-hint6">This is a hint for SciFi films</p>
+            <div class="field">
+                <input type="radio" name="films2" id="fifth" />
+                <label for="fifth">Fifth Element</label>
+            </div>
+
+            <div class="field">
+                <input type="radio" name="films2" id="sunshine" />
+                <label for="sunshine">Sunshine</label>
+            </div>
+
+            <div class="field">
+                <input type="radio" name="films2" id="robocop" />
+                <label for="robocop">Robocop</label>
+            </div>
+        </fieldset>
+
         <p>A bit of copy so we can test going backwards</p>
     </main>
 </body>
