@@ -18,13 +18,18 @@
     </head>
 
     <body>
-
+        <h1>Heading and legends in AF</h1>
+        <p>This is a test page to see how headings inside legends are exposed to screen-readers.</p>
+        <p>Both the following fieldsets have a h1 inside the legend.</p>
+        <p>The first example (drinks) has a css style of "overflow hidden" added to the legend to fix a bug in Safari where margins on contained headings were not honoured.</p>
+        <p>This style exists as part of Gov Elements library.</p>
+        <p>The second example (cakes) does not have this style and acts as a control.</p>
 
         <p>Paragraph as a navigation stop.</p>
 
         <fieldset class="with-overflow" aria-describedby="hint-drink">
             <legend>
-                <h1>Which drink do you prefer?</h1>
+                <h2>Which drink do you prefer?</h2>
             </legend>
             <p id="hint-drink">This has a legend with overflow.</p>
             <div>
@@ -42,7 +47,7 @@
 
         <fieldset aria-describedby="hint-cake">
             <legend>
-                <h1>Which cake do you prefer?</h1>
+                <h2>Which cake do you prefer?</h2>
             </legend>
             <p id="hint-cake">This has a legend without overflow.</p>
             <div>
