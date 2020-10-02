@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en" class="no-js"><!--<![endif]-->
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>Heading and legends in AF</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .with-overflow legend {
+                overflow: hidden;
+            }
+            h1 {
+                margin-top: 1em;
+                margin-bottom: 2em;
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+        <p>Paragraph as a navigation stop.</p>
+
+        <fieldset class="with-overflow" aria-describedby="hint-drink">
+            <legend>
+                <h1>Which drink do you prefer?</h1>
+            </legend>
+            <p id="hint-drink">This has a legend with overflow.</p>
+            <div>
+                <input type="radio" name="drink" id="tea" value="tea" /><label for="tea">Tea</label>
+            </div>
+            <div>
+                <input type="radio" name="drink" id="coffee" value="coffee" /><label for="coffee">Coffee</label>
+            </div>
+            <div>
+                <input type="radio" name="drink" id="beer" value="beer" /><label for="beer">Beer</label>
+            </div>
+        </fieldset>
+
+        <p>Paragraph as a navigation stop.</p>
+
+        <fieldset aria-describedby="hint-cake">
+            <legend>
+                <h1>Which cake do you prefer?</h1>
+            </legend>
+            <p id="hint-cake">This has a legend without overflow.</p>
+            <div>
+                <input type="radio" name="cake" id="lemondrizzle" value="lemondrizzle" /><label for="lemondrizzle">Lemon drizzle</label>
+            </div>
+            <div>
+                <input type="radio" name="cake" id="blackforest" value="blackforest" /><label for="blackforest">Black forest</label>
+            </div>
+            <div>
+                <input type="radio" name="cake" id="carrot" value="carrot" /><label for="carrot">Carrot</label>
+            </div>
+        </fieldset>
+
+        <button>Submit</button>
+    </body>
+</html>
+
