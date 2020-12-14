@@ -19,7 +19,10 @@
         }
         label {
             display: block;
+            font-weight: 700;
         }
+        p {margin: 0;}
+
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -39,15 +42,15 @@
     
     <form action="/" method="post" novalidate="">
       
-        
+        <div class="field">
 
   <label class="govuk-label govuk-label--l">
       What is the name of the event?
     </label>
    <p>Random paragraph</p>
-<input class="field" id="event-name" name="event-name" type="text">
+<input id="event-name" name="event-name" type="text">
 
-
+        </div>
       
     </form>
   
