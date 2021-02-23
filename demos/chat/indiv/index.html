@@ -121,7 +121,7 @@
                         contentlist2 = "advice 3";
                         contentlist3 = "advice 2";
                         }
-                        chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" role="alert" tabindex="-1" aria-labelledby="timestamp' + chatCounter + 'am"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
+                        chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" role="alert" tabindex="-1" aria-labelledby="timestamp' + chatCounter + '"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
                         document.querySelector('#chatMessage' + chatCounter).focus();
                     }, 800)
                 }
