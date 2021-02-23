@@ -17,6 +17,9 @@
         </style>
 
         <style>
+            .chat {
+                width: 30em;
+            }
             .chat_message {
                 border:6px solid black;
                 border-radius: 1em;
@@ -24,12 +27,15 @@
                 padding: 2em;
                 max-width: 20em;
             }
+            .chat_message--user {
+                margin-left: 10em;
+            }
             .chat_message:focus {
                 box-shadow: 0 0 0 4px #fd0;
                 outline: none;
             }
             .timestamp {
-                color: gray;
+                color: rgb(102, 102, 102);
             }
         </style>
     </head>
@@ -55,9 +61,9 @@
                     <h1 class="govuk-heading-xl" id="intro">
                         Chat
                     </h1>
-                    <p class="govuk-body">Using a log.</p>
+                    <p class="govuk-body">Using a log. Begin by clicking the start link.</p>
                 </div>
-                <div class="govuk-grid-column-two-thirds" role="log" aria-labelledby="intro">
+                <div class="govuk-grid-column-two-thirds" id="chatwrapper" role="log" aria-labelledby="intro">
 
                     <div class="chat">
                         <div class="chat_message">
@@ -69,7 +75,7 @@
                     </div>
 
                     <div class="govuk-button-group">
-                        <input class="govuk-input govuk-!-width-one-half" id="first-name" name="first-name" type="text" placeholder="Ask">
+                        <input aria-controls="chatwrapper" class="govuk-input govuk-!-width-one-half" id="first-name" name="first-name" type="text" placeholder="Ask">
                         <input type="submit" value="Send" class="govuk-button" />
                     </div>
                 </div>
@@ -88,14 +94,20 @@
                         if (target.matches('[type="submit"], .govuk-link')) {
                             e.preventDefault();
                             e.stopPropagation();
-                            fireChat();
+                            log.setAttribute('aria-busy', 'true');
+                            // add user response
+                            contentPara = target.matches(".govuk-link") ? target.innerText : document.querySelector('[type="text"]').value;
+                            setTimeout(function(){
+                                chat.insertAdjacentHTML('beforeend', '<div id="userchatMessage' + chatCounter + '" class="chat_message chat_message--user" tabindex="-1" aria-labelledby="user_timestamp' + chatCounter + '"><div id="user_timestamp' + chatCounter + '" class="timestamp govuk-body-s">You said at 11:0' + chatCounter + 'am</div><p class="govuk-body" id="usercontentPara' + chatCounter + '">' + contentPara + '</p></div>')
+                                fireChat();
+                            }, 50);
                             break;
                         }
                     }
                 }, false);
 
                 function fireChat(){
-                    log.setAttribute('aria-busy', 'true');
+
                     setTimeout(function(){
                         chatCounter = chatCounter + 1;
                         var contentPara, contentlist1, contentlist2, contentlist3;
@@ -121,16 +133,17 @@
                         default:
                         contentPara = "Test:"
                         contentlist1 = "advice 1";
-                        contentlist2 = "advice 3";
-                        contentlist3 = "advice 2";
+                        contentlist2 = "advice 2";
+                        contentlist3 = "advice 3";
                         }
                         chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" tabindex="-1"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
                         log.removeAttribute('aria-busy');
                         document.querySelector('#chatMessage' + chatCounter).focus();
-                    }, 1200)
+                    }, 2000)
                 }
             //aria-labelledby="contentPara' + chatCounter + ' contentList' + chatCounter + '"
             </script>
-
+        </main>
+    </div>
 </body>
 </html>
