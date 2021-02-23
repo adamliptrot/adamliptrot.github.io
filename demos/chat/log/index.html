@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en" class="no-js"><!--<![endif]-->
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../govuk/assets/stylesheets/govuk-frontend-3.6.0.min.css" />
+        <style>
+            .with-overflow legend {
+                overflow: hidden;
+            }
+            h1 {
+                margin-top: 1em;
+                margin-bottom: 2em;
+            }
+        </style>
+
+        <style>
+            .chat_message {
+                border:6px solid black;
+                border-radius: 1em;
+                margin: 2em 0;
+                padding: 2em;
+                max-width: 20em;
+            }
+            .chat_message:focus {
+                box-shadow: 0 0 0 4px #fd0;
+                outline: none;
+            }
+            .timestamp {
+                color: gray;
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+
+
+      <div class="govuk-width-container ">
+
+        <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+
+
+
+
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+
+                    <h1 class="govuk-heading-xl" id="intro">
+                        Chat
+                    </h1>
+                </div>
+                <div class="govuk-grid-column-two-thirds" role="log" aria-labelledby="intro">
+
+                    <div class="chat">
+                        <div class="chat_message">
+                            <p class="govuk-body">Hello</p>
+                            <p class="govuk-body">I can answer questions about support for businesses and employers during coronavirus (COVID-19).</p>
+                        </div>
+
+                    </div>
+
+                    <div class="govuk-button-group">
+                        <input class="govuk-input govuk-!-width-one-half" id="first-name" name="first-name" type="text" placeholder="Ask">
+                        <input type="submit" value="Send" class="govuk-button" />
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <script>
+                var chat = document.querySelector('.chat');
+                var chatCounter = 0;
+                document.addEventListener('click', function(e) {
+                    // loop parent nodes from the target to the delegation node
+                    for (var target = e.target; target && target != this; target = target.parentNode) {
+                        if (target.matches('[type="submit"], .govuk-link')) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            fireChat();
+                            break;
+                        }
+                    }
+                }, false);
+
+                function fireChat(){
+                    setTimeout(function(){
+                        chatCounter = chatCounter + 1;
+                        var contentPara, contentlist1, contentlist2, contentlist3;
+                        switch (chatCounter){
+                        case 1:
+                        contentPara = "What would you like to find out about?"
+                        contentlist1 = "Furloughing employees in the Coronavirus Job Retention Scheme";
+                        contentlist2 = "Paying and claiming back Statutory Sick Pay";
+                        contentlist3 = "Paying deferred VAT";
+                        break;
+                        case 2:
+                        contentPara = "What can I help you with?"
+                        contentlist1 = "Which employees you can furlough";
+                        contentlist2 = "Starting or managing a claim";
+                        contentlist3 = "Calculating employee hours and pay";
+                        break;
+                        case 3:
+                        contentPara = "I can tell you about furloughing an employee who:"
+                        contentlist1 = "you missed off payroll";
+                        contentlist2 = "you made redundant";
+                        contentlist3 = "you have not furloughed before";
+                        break;
+                        default:
+                        contentPara = "Test:"
+                        contentlist1 = "advice 1";
+                        contentlist2 = "advice 3";
+                        contentlist3 = "advice 2";
+                        }
+                        chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" tabindex="-1"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
+                        document.querySelector('#chatMessage' + chatCounter).focus();
+                    }, 800)
+                }
+            //aria-labelledby="contentPara' + chatCounter + ' contentList' + chatCounter + '"
+            </script>
+
+</body>
+</html>
