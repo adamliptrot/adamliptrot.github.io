@@ -80,6 +80,7 @@
 
             <script>
                 var chat = document.querySelector('.chat');
+                var log = document.querySelector('[role="log"]');
                 var chatCounter = 0;
                 document.addEventListener('click', function(e) {
                     // loop parent nodes from the target to the delegation node
@@ -94,6 +95,7 @@
                 }, false);
 
                 function fireChat(){
+                    log.setAttribute('aria-busy', 'true');
                     setTimeout(function(){
                         chatCounter = chatCounter + 1;
                         var contentPara, contentlist1, contentlist2, contentlist3;
@@ -123,6 +125,7 @@
                         contentlist3 = "advice 2";
                         }
                         chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" tabindex="-1"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
+                        log.removeAttribute('aria-busy');
                         document.querySelector('#chatMessage' + chatCounter).focus();
                     }, 1200)
                 }
