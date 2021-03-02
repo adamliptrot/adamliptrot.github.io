@@ -94,7 +94,10 @@
                         if (target.matches('[type="submit"], .govuk-link')) {
                             e.preventDefault();
                             e.stopPropagation();
+
                             log.setAttribute('aria-busy', 'true');
+                            //log.setAttribute('aria-live','off');
+
                             // add user response
                             contentPara = target.matches(".govuk-link") ? target.innerText : document.querySelector('[type="text"]').value;
                             setTimeout(function(){
@@ -136,8 +139,11 @@
                         contentlist2 = "advice 2";
                         contentlist3 = "advice 3";
                         }
-                        chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" tabindex="-1"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
+                        chat.insertAdjacentHTML('beforeend', '<div id="chatMessage' + chatCounter + '" class="chat_message" tabindex="-1"><div id="timestamp' + chatCounter + '" class="timestamp govuk-body-s">HMRC said at 11:0' + chatCounter + 'am</div><p class="govuk-body" id="contentPara' + chatCounter + '">' + contentPara + '</p><ul id="contentList' + chatCounter + '" class="govuk-list--bullet govuk-body"><li><a href="" class="govuk-link">' + contentlist1 + '</a></li><li><a href="" class="govuk-link">' + contentlist2 + '</a></li><li><a href="" class="govuk-link">' + contentlist3 + '</a></li></ul></div>')
+
+                        //log.removeAttribute('aria-live');
                         log.removeAttribute('aria-busy');
+
                         document.querySelector('#chatMessage' + chatCounter).focus();
                     }, 2000)
                 }
