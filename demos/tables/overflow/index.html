@@ -9,15 +9,20 @@
         <style>
             [role="region"][aria-labelledby][tabindex] {
             overflow: auto;
-            /* border: 0.1em solid #d6d6d6; */
             }
 
+
             [role="region"][aria-labelledby][tabindex]:focus {
-            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-            outline: 0.1em solid rgba(0, 0, 0, 0.1);
+                box-shadow: -2px 0px 0em 4px #0b0c0c, 2px 0px 0em 4px #0b0c0c, 0px 2px 0em 4px #0b0c0c, 0px -2px 0em 4px #0b0c0c;
+                outline: 3px solid #fd0;
+                outline-offset: 5px;
             }
 
             [role="region"][aria-labelledby][tabindex] {
+                margin-bottom: 10px;
+                padding-left: 5px;
+                margin-left: -5px;
+                padding-right: 5px;
                 background: linear-gradient(to right, #fff 30%, rgba(255, 255, 255, 0)),
                     linear-gradient(to right, rgba(255, 255, 255, 0), #fff 70%) 0 100%,
                     radial-gradient(
@@ -38,7 +43,10 @@
                 background-attachment: local, local, scroll, scroll;
                 }
 
-
+                .govuk-table--scroll .govuk-table__cell:last-child,
+                .govuk-table--scroll .govuk-table__header:last-child {
+                    padding-right: 10px;
+                }
         </style>
     </head>
 
@@ -66,8 +74,9 @@
                     <p class="govuk-body"><a class="govuk-link" href="">Link for a tab stop</a></p>
                     <p class="govuk-body">Making tables work on smaller screens and zoomed displays.</p>
 
+                    <div class="hmrc-table__container">
                     <div role="region" aria-labelledby="tableCaption" tabindex="0">
-                        <table class="govuk-table">
+                        <table class="govuk-table govuk-table--scroll">
                             <caption id="tableCaption" class="govuk-table__caption govuk-table__caption--m">Month you apply</caption>
                             <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -103,7 +112,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    </div>
                     <p class="govuk-body"><a class="govuk-link" href="">Link for a tab stop</a></p>
 
                 </div>
