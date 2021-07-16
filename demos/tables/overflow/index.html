@@ -7,12 +7,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../../govuk/assets/stylesheets/govuk-frontend-3.6.0.min.css" />
         <style>
+            main {
+                contain: layout inline-size;
+            }
+
+
+
             [role="region"][aria-labelledby][tabindex] {
             overflow: auto;
             }
 
-
             [role="region"][aria-labelledby][tabindex]:focus {
+                box-shadow: -2px 0px 0em 4px #0b0c0c, 2px 0px 0em 4px #0b0c0c, 0px 2px 0em 4px #0b0c0c, 0px -2px 0em 4px #0b0c0c;
+                outline: 3px solid #fd0;
+                outline-offset: 5px;
+            }
+            [role="region"][aria-labelledby][tabindex]:not(:focus-visible) {
+                box-shadow: none;
+                outline: none;
+            }
+            [role="region"][aria-labelledby][tabindex]:focus-visible {
                 box-shadow: -2px 0px 0em 4px #0b0c0c, 2px 0px 0em 4px #0b0c0c, 0px 2px 0em 4px #0b0c0c, 0px -2px 0em 4px #0b0c0c;
                 outline: 3px solid #fd0;
                 outline-offset: 5px;
